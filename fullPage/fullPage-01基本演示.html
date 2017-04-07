@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>fullPage-01基本演示</title>
+    <style>
+    .section {
+        text-align: center;
+        font: 40px "microsoft Yahei";
+        color: #ffffff;
+    }
+    </style>
+    <link rel="stylesheet" href="./lib/css/jquery.fullPage.css">
+    <script src="./lib/js/jquery-1.12.2.min.js"></script>
+    <script src="./lib/js/jquery.fullPage.js"></script>
+    <script>
+    	$(function() {
+    		$("#fullPage").fullpage({
+		    	// 控制分页的背景颜色
+		        sectionsColor:['#BFDA00','#2EBE21','#2C3E50','#FF9900'],
+		        // 控制幻灯片切换是否显示箭头，默认为true，false状态需要通过左右按键控制切换
+		        controlArrows:true
+		    });
+		})
+
+    </script>
+</head>
+
+<body>
+    <div id="fullPage">
+        <div class="section section1">
+            <h1>这是第一屏</h1>
+            <p>fullPage的基本使用</p>
+        </div>
+        <div class="section section2">
+            <div class="slide">
+                <h3>第二屏的第一屏</h3></div>
+            <div class="slide">
+                <h3>第二屏的第二屏</h3></div>
+            <div class="slide">
+                <h3>第二屏的第三屏</h3></div>
+        </div>
+        <div class="section section3">
+            <h1>这是第三屏</h1>
+        </div>
+        <div class="section section4">
+            <h1>这是第四屏</h1>
+        </div>
+    </div>
+</body>
+
+</html>
