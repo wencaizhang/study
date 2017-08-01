@@ -13,5 +13,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage" : "http://wencaizhang.com/demo/react-commnet",
+  "homepage" : "http://wencaizhang.com/demo/react-comments/build/index.html",
 }
