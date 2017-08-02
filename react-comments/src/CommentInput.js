@@ -8,6 +8,26 @@ class CommentInput extends Component {
             content: ''
         }
     }
+    
+    componentWillMount () {
+        this._loadUsername()
+    }
+
+    componentDidMount () {
+        // 通过 ref 让评论框自动聚焦
+        this.textarea.focus()
+    }
+
+    _saveUsername (username) {
+        localStorage.setItem('username', username)
+    }
+
+    _loadUsername () {
+        const username = localStorage.getItem('username')
+        if (username) {
+            this.setState({ username })
+        }
+    }
 
     handleUsernameChange (event) {
         this.setState({
@@ -23,10 +43,18 @@ class CommentInput extends Component {
 
     handleSubmit () {
         if (this.props.onSubmit) {
-            const { username, content } = this.state
-            this.props.onSubmit({ username, content })
+            this.props.onSubmit({
+                username: this.state.username,
+                content: this.state.content,
+                createdTime: +new Date()
+            })
         }
         this.setState({ content: '' })
+    }
+
+
+    handleUsernameBlur (e) {
+        this._saveUsername(e.target.value)
     }
 
     render () {
@@ -37,13 +65,15 @@ class CommentInput extends Component {
                     <div className='comment-field-input'>
                         <input type="text" 
                             value={this.state.username}
-                            onChange={this.handleUsernameChange.bind(this)}/>
+                            onChange={this.handleUsernameChange.bind(this)}
+                            onBlur={this.handleUsernameBlur.bind(this)}/>
                     </div>
                 </div>
                 <div className='comment-field'>
                     <span className='comment-field-name'>评论内容</span>
                     <div className='comment-field-input'>
-                        <textarea 
+                        <textarea
+                            ref={(textarea) => this.textarea = textarea}
                             value={this.state.content} 
                             onChange={this.handleContentChange.bind(this)}/>
                     </div>
@@ -57,6 +87,8 @@ class CommentInput extends Component {
             </div>
         )
     }
+
+
 }
 
 export default CommentInput

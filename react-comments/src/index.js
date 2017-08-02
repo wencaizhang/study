@@ -220,6 +220,115 @@ class ListIndex extends Component {
         )
     }
 }
+
+class Clock extends Component {
+    constructor () {
+        // 初始化的东西放在 constructor 中
+        super()
+        this.state = {
+            date: new Date()
+        }
+    }
+
+    componentWillMount () {
+        // 组件的启动，如 ajax、定时器的启动，可以放在 componentWillMount 中
+        this.timer = setInterval(() => {
+            this.setState({ date: new Date() })
+        }, 1000)
+    }
+
+    render () {
+        return (
+            <div>
+                <h1>
+                    <p>现在时间是</p>
+                    {this.state.date.toLocaleDateString()}
+                </h1>
+            </div>
+        )
+    }
+
+    componentWillUnmount () {
+        // 组件销毁时，需要清理数据类的工作放在 componentWillUnmount 中
+        clearInterval(this.timer)
+    }
+}
+
+class Index2 extends Component {
+    constructor () {
+        super()
+        this.state = {
+            isShowClock: true
+        }
+    }
+
+    handleShowOrHide () {
+        this.setState({
+            isShowClock: !this.state.isShowClock
+        })
+    }
+    render () {
+        return (
+            <div>
+                <button onClick={this.handleShowOrHide.bind(this)}>显示或隐藏时钟</button>
+                {this.state.isShowClock ? <Clock /> : null}
+            </div>
+        )
+    }
+}
+
+class AutoFocusInput extends Component {
+    componentDidMount () {
+        // 通过 ref 属性进行 DOM 操作
+        this.input.focus()
+    }
+
+    render () {
+        return (
+            <input type="text" ref={(input) => this.input = input}/>
+        )
+    }
+}
+
+class Card extends Component {
+    render () {
+        return (
+            <div className='card'>
+                <div className='card-content'>
+                    {this.props.content}
+                </div>
+            </div>
+        )
+    }
+
+    componentDidMount () {
+        console.log(this.props.children)
+    }
+}
+
+class Editor extends Component {
+    constructor () {
+        super()
+        this.state = {
+            content: '<h1>React.js 小书</h1>'
+        }
+    }
+
+    render () {
+        // dangerouslySetInnerHTML 来动态渲染 innerHTML
+        // 目的是为了防止跨站脚本攻击
+        return (
+            <div>
+                <div 
+                    className="eidtor-wrapper"
+                    dangerouslySetInnerHTML={{__html: this.state.content}} />
+                <h1 style={{ fontSize: '12px', color: 'lightblue' }}>React.js 小书</h1>
+            </div>
+        )
+
+    }
+}
+
 ReactDOM.render(
     <CommentApp />, 
     document.getElementById('root')
