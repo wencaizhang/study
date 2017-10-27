@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            scrollbar-arrow-color: #f4ae21;
+            /*三角箭头的颜色*/
+            scrollbar-face-color: #333;
+            /*立体滚动条的颜色*/
+            scrollbar-3dlight-color: #666;
+            /*立体滚动条亮边的颜色*/
+            scrollbar-highlight-color: #666;
+            /*滚动条空白部分的颜色*/
+            scrollbar-shadow-color: #999;
+            /*立体滚动条阴影的颜色*/
+            scrollbar-darkshadow-color: #666;
+            /*立体滚动条强阴影的颜色*/
+            scrollbar-track-color: #666;
+            /*立体滚动条背景颜色*/
+            scrollbar-base-color: #f8f8f8;
+            /*滚动条的基本颜色*/
+            Cursor: url(mouse.cur);
+            /*自定义个性鼠标*/
+        }
+
+        .bg {
+            height: 1000px;
+            width: 100%;
+            background-color: lightblue;
+        }
+
+        #scrollbar {
+            width: 300px;
+            height: 300px;
+            overflow: auto;
+            float: left;
+        }
+
+        #scrollbar div {
+            width: 800px;
+            height: 2000px;
+        }
+
+        #scrollbar::-webkit-scrollbar {
+            /* 滚动条整体部分，其中的属性有width, height, background, border（就和一个块级元素一样）等。  */
+            width: 12px;
+            height: 12px;
+        }
+
+        #scrollbar::-webkit-scrollbar-button {
+            /* 滚动条两端的按钮。可以用display: none让其不显示，也可以添加背景图片，颜色改变显示效果。 width:12px; */
+            height: 12px;
+        }
+
+        #scrollbar::-webkit-scrollbar-track {
+            /* 外层轨道。可以用display: none让其不显示，也可以添加背景图片，颜色改变显示效果。  */
+            background: #232428;
+            border-radius: 20px;
+
+        }
+
+        #scrollbar::-webkit-scrollbar-track-piece {
+            /* 内层轨道，滚动条中间部分（除去）。  */
+            background: #232428;
+            border-radius: 20px;
+        }
+
+        #scrollbar::-webkit-scrollbar-thumb {
+            /* 滚动条里面可以拖动的那部分  */
+            background: #85868B;
+            border-radius: 50px;
+        }
+
+        #scrollbar::-webkit-scrollbar-corner {
+            /* 边角  */
+            background: #fff;
+        }
+
+        #scrollbar::-webkit-scrollbar-resizer {
+            /* 定义右下角拖动块的样式  */
+            background: #fff;
+        }
+               #scrollbar::-webkit-scrollbar {
+            /* 滚动条整体部分，其中的属性有width, height, background, border（就和一个块级元素一样）等。  */
+            width: 12px;
+            height: 12px;
+        }
+
+        #scrollbar::-webkit-scrollbar-button {
+            /* 滚动条两端的按钮。可以用display: none让其不显示，也可以添加背景图片，颜色改变显示效果。 width:12px; */
+            height: 12px;
+        }
+
+        #scrollbar::-webkit-scrollbar-track {
+            /* 外层轨道。可以用display: none让其不显示，也可以添加背景图片，颜色改变显示效果。  */
+            background: #232428;
+            border-radius: 20px;
+
+        }
+
+        #scrollbar::-webkit-scrollbar-track-piece {
+            /* 内层轨道，滚动条中间部分（除去）。  */
+            background: #232428;
+            border-radius: 20px;
+        }
+
+        #scrollbar::-webkit-scrollbar-thumb {
+            /* 滚动条里面可以拖动的那部分  */
+            background: #85868B;
+            border-radius: 50px;
+        }
+
+        #scrollbar::-webkit-scrollbar-corner {
+            /* 边角  */
+            background: #fff;
+        }
+
+        #scrollbar::-webkit-scrollbar-resizer {
+            /* 定义右下角拖动块的样式  */
+            background: #fff;
+        }
+        /* === */
+        body::-webkit-scrollbar {
+            /* 滚动条整体部分，其中的属性有width, height, background, border（就和一个块级元素一样）等。  */
+            width: 12px;
+            height: 12px;
+        }
+
+        body::-webkit-scrollbar-button {
+            /* 滚动条两端的按钮。可以用display: none让其不显示，也可以添加背景图片，颜色改变显示效果。 width:12px; */
+            height: 12px;
+        }
+
+        body::-webkit-scrollbar-track {
+            /* 外层轨道。可以用display: none让其不显示，也可以添加背景图片，颜色改变显示效果。  */
+            background: #232428;
+            border-radius: 20px;
+
+        }
+
+        body::-webkit-scrollbar-track-piece {
+            /* 内层轨道，滚动条中间部分（除去）。  */
+            background: #232428;
+            border-radius: 20px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            /* 滚动条里面可以拖动的那部分  */
+            background: #85868B;
+            border-radius: 50px;
+        }
+
+        body::-webkit-scrollbar-corner {
+            /* 边角  */
+            background: #fff;
+        }
+
+        body::-webkit-scrollbar-resizer {
+            /* 定义右下角拖动块的样式  */
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <h1>我是背景</h1>
+    </div>
+    <div id='scrollbar'>
+        <div></div>
+    </div>
+</body>
+
+</html>
