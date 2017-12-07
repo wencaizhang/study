@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      width: 1000px;
+      background-color: #fff;
+      margin: 0 auto;
+    }
+
+    .item-container {
+      height: 400px;
+      border-bottom: 1px solid #ccc;
+      vertical-align: middle;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .price-container {
+      position: relative;
+      height: 150px;
+      background-color: lightgreen;
+    }
+
+    .price {
+      position: fixed;
+      bottom: 0;
+      width: 1000px;
+      height: 150px;
+      background-color: lightcoral;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item-container"><h2>占位符</h2></div>
+    <div class="item-container"><h2>占位符</h2></div>
+    <div class="item-container"><h2>注意！</h2></div>
+    <div class="item-container">
+      <h2>目标出现！</h2>
+      <div id="price-container" class="price-container">
+        <div id="price" class="price"><h2>配置费用：￥ 70.20 </h2></div>
+      </div>
+    </div>
+    <div class="item-container">
+      <h2>占位符</h2>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    var $price = $('#price');
+    var $priceContainer = $('#price-container');
+
+    $(window).on('scroll', getPosition);
+
+    function getPosition() {
+      var targetTop = $priceContainer.offset().top + $priceContainer.height();
+      var position = $price.css('position');
+
+      // 可视区域底部 距离 文档顶部的距离 = 文档被上卷的高度 + 可视区域的高度
+      var bottomToDocTop = $(document).scrollTop() + $(window).height();
+
+      if (bottomToDocTop < targetTop && position !== 'fixed') {
+        $price.css('position', 'fixed')
+      }
+
+      if (bottomToDocTop >= targetTop && position === 'fixed') {
+        $price.css('position', 'absolute')
+      }
+    }
+  </script>
+</body>
+
+</html>
