@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>表白信</title>
+		<link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/base.css">
+        <link rel="stylesheet" href="./css/index.css">
+		<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+		<script src="./js/swiper-3.4.2.min.js"></script>
+		<script>
+    		(function (doc, win) {
+        		var docEl = doc.documentElement,
+            	resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            	recalc = function () {
+                	var clientWidth = docEl.clientWidth;
+                	if (!clientWidth) return;
+               		if(clientWidth>=640){
+                    	docEl.style.fontSize = '100px';
+               		}else{
+                    	docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                	}
+           		};
+
+        		if (!doc.addEventListener) return;
+        		win.addEventListener(resizeEvt, recalc, false);
+        		doc.addEventListener('DOMContentLoaded', recalc, false);
+    		})(document, window);
+		</script>
+	</head>
+	<body>
+		<header> 
+				<table style="width:100%;">
+					<tbody>
+						<tr>
+							<td style="width:31%;text-align:left;padding-left:3%;">
+								<a href="http://10.8.202.14:7001/eHR//mehr/jsp/appHomeAction!homepage1.action"> 
+									&lt;&nbsp;返回</a>
+							</td>
+							<td style="width:33%;text-align:center;">
+								 TA的表白信
+							</td>
+							<td style="width:33%;text-align:right;padding-right: 3%;">
+								<img src="./images/share.png" alt="">
+								<a href="#" style="text-decoration: underline;">分享</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<audio id="music" src="./music/snow_dream.mp3" ></audio>
+		</header>
+		
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide page1">
+						<p class="title">亲爱的xxx:</p>
+						<p class="number">9999</p>
+
+		        </div>
+		        <div class="swiper-slide page2">
+		        		<p class="year">2013年7月1日</p>
+		        		<p class="totalYear">99</p>
+		        </div>
+		        <div class="swiper-slide page3">
+					        	<div class="content3">
+					        		<div class="block" style="margin-bottom:0">
+					        			<img src="./images/page3.png" class="page3Top">
+					        		</div>
+					        		<div class="block role">
+					        			<p class="roleName">宝妈</p>
+					        		</div>
+					        		<div class="block checkIntime">
+					        			<p class="checkTime">07:36</p>
+					        		</div>
+					        		<div class="block allowance1">
+					        		</div>
+					        		<div class="block allowance2">
+					        			<p class="allowanceTime">999</p>
+					        			<p class="allowanceMoney">99999</p>
+					        		</div>
+					        		<div class="block allowance3">
+					        			<p class="allowanceMoney">99999</p>
+					        		</div>
+					        		<div class="block recommend">
+					        			<p class="recommendTimes">999</p>
+					        		</div>
+					        		<div class="block exam">
+					        			<p class="examScore">100</p>
+					        			<p class="examPercentage">99</p>
+					        		</div>
+					        		<div class="block publicOut">
+					        			<p class="publicOutTimes">999</p>
+					        		</div>
+					        		<div class="block sickLeave">
+					        			<p class="sickLeaveTimes">999</p>
+					        		</div>
+					        		<div class="block volunteer">
+					        			<p class="activities">999</p>
+					        		</div>
+					        		<div class="block">
+					        			<img src="./images/volunteer1.png" class="volunteer1">
+					        		</div>
+					        		<div class="block promotion">
+					        			<p class="promotionPosition1"></p>
+					        			<p class="promotionPosition2"></p>
+					        		</div>
+					        		<div class="block" style="height:1.31rem;margin-bottom:0;">
+					        			<img src="./images/button_next.png" class="btn swiper-button-next">
+					        		</div>
+					        	</div>
+		        </div>
+		        <div class="swiper-slide page4">	
+		        </div>
+		       
+		    </div>
+		    <div class="swiper-button-next btn1" id="btn1"></div>
+		   
+		</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#music')[0].play(); 
+	var mySwiper = new Swiper('.swiper-container', {
+	    direction: 'vertical',
+	    loop: true,
+	    initialSlide : 0,
+    	noSwiping : true,
+	    // 后退按钮
+	    nextButton: '.swiper-button-next',
+	    onSlideChangeStart: function(swiper){
+            var btn1 = document.getElementById('btn1');
+            if(null!=btn1){
+            	if (swiper.activeIndex == 3) {
+                	btn1.remove();
+				}else if(swiper.activeIndex == 5){
+					btn1.style.opacity = 1;
+				}else if(swiper.activeIndex == 0){
+					btn1.style.opacity = 0.3;
+				}
+            }else if(null == btn1){
+				var $btn = $('<div class="swiper-button-next btn1" id="btn1"></div>');
+				$('.swiper-container').append($btn);
+				if(swiper.activeIndex == 4){
+					$btn.css('opacity','0.3');
+				}
+			}
+        }
+		
+	});
+	var startScroll, touchStart, touchCurrent;  
+	mySwiper.slides.on('touchstart', function (e) {  
+	startScroll = this.scrollTop;  
+	touchStart = e.targetTouches[0].pageY;  
+	}, true);  
+	mySwiper.slides.on('touchmove', function (e) {  
+	touchCurrent = e.targetTouches[0].pageY;  
+	var touchesDiff = touchCurrent - touchStart;  
+	var slide = this;  
+	var onlyScrolling =   
+	        ( slide.scrollHeight > slide.offsetHeight ) &&  
+	        (  
+	            ( touchesDiff < 0 && startScroll === 0 ) ||  
+	            ( touchesDiff > 0 && startScroll === ( slide.scrollHeight - slide.offsetHeight ) ) ||  
+	            ( startScroll > 0 && startScroll < ( slide.scrollHeight - slide.offsetHeight ) )  
+	        );  
+	if (onlyScrolling) {  
+	    e.stopPropagation();  
+	}  
+	}, true);
+}); 
+</script>

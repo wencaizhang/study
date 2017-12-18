@@ -1,0 +1,398 @@
+@charset "utf-8";
+/* 头部 */
+html,body{
+	width:100%;
+	height:100%;
+}
+*{
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+	background-color:#f6f8fa;
+	overflow: hidden;
+}
+header {
+	width: 100%;
+	background-color:#6699ff;
+	font-size: 1.125em;
+	text-align: center;
+	color: #fff;
+	line-height: 36px;
+	height:36px;
+	position: fixed;
+	z-index: 101;
+	top: 0px;
+}
+.swiper-container{
+	width:100%;
+	height:100%;
+	padding-top:36px;
+}
+.page1{
+	width: 100%;
+    height: 100%;
+    background-size:100% 100%;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/page1.png');
+	background-repeat:no-repeat;
+	position:relative;
+	top:0px;
+	left:0px;
+}
+.page1 .title{
+	padding-top:.48rem;
+	padding-left:.38rem;
+	font-size:.32rem;
+	color:#ff909d;
+}
+.page1 .number{
+	width: 1.63rem;
+	position: absolute;
+    top: 10.4%;
+    right: 1rem;
+    font-size: .54rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 5px 5px 5px #774f46;
+}
+.btn1{
+	position: fixed;
+    top: auto;
+    right:auto;
+    bottom: .27rem; 
+    left: 2.82rem;
+    width: .73rem;
+    height: .97rem;
+    margin-top: auto;
+    background-size: 100% 100%;
+    background-image: url('../images/button_next.png');
+	background-repeat: no-repeat;
+}
+.page2{
+	width:100%;
+	height:100%;
+	background-size: 100% 100%;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/page2.png');
+	background-repeat:no-repeat;
+	position:relative;
+	top:0px;
+	left:0;
+}
+.page2 p.year{
+	position:absolute;
+	top: 16%;
+    left: .49rem;
+	color:#ff455a;
+	font-size:.32rem;
+	line-height:.42rem;
+	font-weight:bold;
+}
+.page2 p.totalYear{
+	width: .53rem;
+    position: absolute;
+    top: 23.5%;
+    left: .53rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.page3{
+	width:100%;
+	overflow-y:scroll;
+}
+.page3Top{
+	display:block;
+	width: 100%;
+	height:4.68rem;
+}
+.content3{
+	width:100%;
+	background-color:#ffdce0;
+	position:relative;
+	top:0;
+	left:0;
+}
+.block{
+	position:relative;
+	top:0;
+	left:0;
+	margin-bottom:.52rem;
+}
+.content3 .role{
+	width: 100%;
+	height:2.52rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/role.png');
+	background-repeat:no-repeat;
+}
+.content3 .checkIntime{
+	width: 100%;
+	height:2.40rem;
+	padding-left:.105rem;
+	padding-right:.105rem;
+	background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/checkIntime.png');
+	background-repeat:no-repeat;
+}
+.content3 .allowance1{
+	width: 100%;
+	height:2.40rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/allowance_1.png');
+	background-repeat:no-repeat;
+}
+.content3 .allowance2{
+	width: 100%;
+	height:2.40rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/allowance_2.png');
+	background-repeat:no-repeat;
+}
+.content3 .allowance3{
+	width: 100%;
+	height:2.40rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/allowance_3.png');
+	background-repeat:no-repeat;
+}
+.content3 .recommend{
+	width: 100%;
+	height:2.50rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/recommend.png');
+	background-repeat:no-repeat;
+}
+.content3 .exam{
+	width: 100%;
+	height:2.40rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/exam.png');
+	background-repeat:no-repeat;
+}
+.content3 .publicOut{
+	width: 100%;
+	height:2.60rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/publicOut.png');
+	background-repeat:no-repeat;
+}
+.content3 .sickLeave{
+	width: 100%;
+	height:2.47rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/sickLeave.png');
+	background-repeat:no-repeat;
+}
+.content3 .volunteer{
+	width: 100%;
+	height:2.56rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/volunteer.png');
+	background-repeat:no-repeat;
+}
+.content3 .volunteer1{
+	width: 100%;
+	height:2.56rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/volunteer1.png');
+	background-repeat:no-repeat;
+}
+.content3 .promotion{
+	width: 100%;
+	height:2.40rem;
+	padding-left:.135rem;
+	padding-right:.135rem;
+	margin-bottom: .68rem;
+    background-size:contain;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/promotion.png');
+	background-repeat:no-repeat;
+}
+.content3 p.roleName{
+	position:absolute;
+	top: 41.6%;
+    left: 1.79rem;
+	color:#ff455a;
+	font-size:.32rem;
+	font-weight:bold;
+}
+.content3 p.checkTime{
+	position:absolute;
+	top: 24.35%;
+    left: 4.11rem;
+	color:#ff455a;
+	font-size:.32rem;
+	font-weight:bold;
+}
+.content3 p.allowanceTime{
+	width: .58rem;
+    position: absolute;
+    top: 39.55%;
+    left: 1.35rem;
+    color: #ff455a;
+    font-size: .32rem;
+    text-align: center;
+    font-weight: bold;
+}
+.content3 p.allowanceMoney{
+	width: .99rem;
+    position: absolute;
+    top: 24.63%;
+    left: 4.7rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.recommendTimes{
+	width: .58rem;
+	position: absolute;
+    top: 28.5%;
+    left: .85rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.examScore{
+	width: .59rem;
+    position: absolute;
+    top: 29.6%;
+    left: 4.54rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.examPercentage{
+	width:.4rem;
+	position: absolute;
+    top: 45.5%;
+    left: 3.36rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.publicOutTimes{
+	width: .59rem;
+    position: absolute;
+    top: 27.4%;
+    left: 2.29rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.sickLeaveTimes{
+	width: .59rem;
+    position: absolute;
+    top: 34.0%;
+    left: 1.77rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.activities{
+	width: .59rem;
+    position: absolute;
+    top: 20.8%;
+    left: 3.07rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.promotionPosition1{
+	width: 1.96rem;
+    position: absolute;
+    top: 29.0%;
+    left: .89rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content3 p.promotionPosition2{
+	position: absolute;
+    top: 29.0%;
+    left:3.41rem;
+    color: #ff455a;
+    font-size: .32rem;
+    font-weight: bold;
+    width: 1.96rem;
+    text-align: center;
+}
+.content3 .btn{
+	position: absolute;
+	top:auto;
+	right:auto;
+	bottom: .33rem;
+    left: 2.82rem;
+    width:.73rem;
+    height: .97rem;
+    background-image:none;
+}
+.page4{
+	width:100%;
+	height:100%;
+	background-size: 100% 100%;
+	background-origin:content-box;
+	background-position:0% 0%;
+	background-image:url('../images/page4.png');
+	background-repeat:no-repeat;
+	position:relative;
+	top:0px;
+	left:0;
+}
