@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      background-color: lightcoral;
+      margin: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box1">
+    <span class='text'>未做任何处理时，mousemove 事件触发后函数执行次数：</span>
+    <span class='number'>0</span>
+  </div>
+  <div class="box" id="box2">
+    <span class='text'>节流后，mousemove 事件触发后函数执行次数：</span>
+    <span class='number'>0</span>
+  </div>
+  <script>
+
+    // 问题：如何传参？？？
+
+    // http://www.alloyteam.com/2012/11/javascript-throttle/
+
+
+    // 使用定时器，让函数延迟 1 秒后执行，
+    // 在此 1 秒内，如果 throttle 函数再次被调用，则清楚上次的定时器，
+    // 即取消上次调用的队列任务，重新设置定时器 
+    // 这样就可以保证 1 秒内函数只会被触发一次，达到函数节流的目的
+    function throttle(method, context) {
+      clearTimeout(method.tId);
+      method.tId = setTimeout(function () {
+        method.call(context);
+      }, 1000)
+    }
+
+    // test
+    var box1 = document.querySelector('#box1');
+    var box2 = document.querySelector('#box2');
+
+    var number1 = box1.querySelector('.number');
+    var number2 = box2.querySelector('.number');
+
+    var count1 = 0;
+    var count2 = 0;
+
+    box1.onmousemove = function () {
+      number1.innerHTML = count1++;
+    }
+    box2.onmousemove = function () {
+      // 如果此处传入匿名函数，则不能达到效果
+      // 如果写成匿名函数的形式，则每次触发 mousemove 事件都会重新创建一个匿名函数，作为 throttle 的参数
+      // 这种情况下，在 throttle 内部无法将上一个定时器清除掉，也就达不到节流的目的了
+      throttle(myfunc);
+    }
+    function myfunc() {
+      number2.innerHTML = count2++;
+    }
+  </script>
+</body>
+
+</html>
