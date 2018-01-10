@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Demo 演示</title>
-    <link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="./lib/css/metroStyle/metroStyle.css" type="text/css">
     <style>
         body {
             background-color: white;
@@ -69,11 +69,9 @@
 </head>
 
 <body>
-    <!-- <h1 style="margin: 40px; font: 32px Microsoft Yahei; text-align: center;">Demo演示</h1>
-    <p>如果感兴趣可以通过右键查看源代码 :)</p> -->
 
-    <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="./lib/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="./lib/js/jquery.ztree.core.js"></script>
     <script>
         var zTree;
         var demoIframe;
@@ -109,52 +107,56 @@
             {   
                 id: 1, 
                 pId: 0, 
-                name: "[core] 基本功能 演示",
+                name: "[core] CSS 类",
+                open: true 
+            },
+            {   
+                id: 2, 
+                pId: 0, 
+                name: "[core] JS 类",
+                open: true 
+            },
+            {   
+                id: 3, 
+                pId: 0, 
+                name: "[core] 其他 类",
                 open: true 
             },
             {
-                id: 101,
                 pId: 1,
                 name: '旋转木马',
                 link: './旋转木马/carrousel.html',
             },
             {
-                id: 102,
                 pId: 1,
                 name: '手风琴',
                 link: './手风琴/accordion.html',
             },
             {
-                id: 103,
-                pId: 1,
+                pId: 2,
                 name: 'fullPage.js',
                 children: [
                     {
-                        id: 1031,
                         pId: 103,
                         name: '基本演示',
                         link: './fullPage/fullPage-01基本演示.html',
                     },
                     {
-                        id: 1032,
                         pId: 103,
                         name: '背景演示',
                         link: './fullPage/fullPage-02背景演示.html',
                     },
                     {
-                        id: 1033,
                         pId: 103,
                         name: '循环演示',
                         link: './fullPage/fullPage-03循环演示.html',
                     },
                     {
-                        id: 1034,
                         pId: 103,
                         name: '绑定菜单',
                         link: './fullPage/fullPage-04绑定菜单.html',
                     },
                     {
-                        id: 1035,
                         pId: 103,
                         name: '分页导航',
                         link: './fullPage/fullPage-05分页导航.html',
@@ -162,103 +164,91 @@
                 ]
             },
             {
-                id: 104,
                 pId: 1,
                 name: 'Canvas',
                 children: [
                     {
-                        id: 1041,
                         pId: 104,
                         name: 'FlappyBird',
-                        link: 'FlappyBird.html',
+                        link: 'Canvas/FlappyBird.html',
                     },
                     {
-                        id: 1042,
                         pId: 104,
                         name: '七巧板',
-                        link: '七巧板.html',
+                        link: 'Canvas/七巧板.html',
                     },
                     {
-                        id: 1042,
                         pId: 104,
                         name: '网状粒子效果',
-                        link: '网状粒子效果.html',
+                        link: 'Canvas/网状粒子效果.html',
                     },
                 ]
             },
             {
-                id: 105,
-                pId: 1,
+                pId: 2,
                 name: 'JS实现时钟效果',
-                link: 'JS实现时钟效果.html',
+                link: 'pages/JS实现时钟效果.html',
             },
             {
-                id: 106,
+                pId: 2,
+                name: '全选反选',
+                link: 'pages/select-all-or-none.html',
+            },
+            {
                 pId: 1,
                 name: '自定义单复选按钮样式',
                 link: '单选复选按钮/index.html',
             },
             {
-                id: 107,
-                pId: 1,
+                pId: 2,
                 name: '锚点',
                 link: '锚点/index.html',
             },
             {
-                id: 108,
                 pId: 1,
                 name: 'css 实现三角形',
                 link: 'icon-angle/index.html',
             },
             {
-                id: 109,
                 pId: 1,
                 name: 'checkbox',
                 link: 'checkbox/demo.html',
             },
             {
-                id: 110,
-                pId: 1,
+                pId: 2,
                 name: '高亮文章目录当前章节',
                 link: 'pages/active-current-title.html',
             },
             {
-                id: 111,
-                pId: 1,
+                pId: 2,
                 name: '有意思的固定定位',
                 link: 'pages/fixedPosition.html',
             },
             {
-                id: 112,
                 pId: 1,
                 name: 'debounce-and-throtte',
                 link: 'debounce-and-throtte/index.html',
             },
             {
-                id: 113,
                 pId: 1,
                 name: '自定义滚动条',
                 link: 'pages/scrollbar.html',
             },
             {
-                id: 114,
                 pId: 1,
                 name: '网页进度条',
                 link: 'pages/process.html',
             },
             {
-                id: 115,
                 pId: 1,
                 name: 'CSS 效果',
                 children: [
                     {
-                        id: 1051,
                         pId: 104,
                         name: '正方体动画',
                         link: 'CSS3/CSS3-正方体动画.html',
                     },
                     {
-                        id: 1052,
                         pId: 104,
                         name: '鼠标滑过放大效果',
                         link: 'CSS3/鼠标滑过放大效果.html',
@@ -267,14 +257,12 @@
                 ]
             },
             {
-                id: 116,
                 pId: 1,
                 name: 'emoji',
                 link: 'pages/emoji-input.html',
             },
             {
-                id: 117,
-                pId: 1,
+                pId: 2,
                 name: 'jq2048',
                 link: 'pages/jq2048.html',
             },
