@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 localstorage本地存储应用demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            padding-top: 50px;
+        }
+        .info {
+            text-align: center;
+            margin: 20px;
+            color: #666;
+        }
+        .container {
+            width: 300px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px 10px;
+        }
+        input:focus {
+            border: 1px solid #3f89ec;
+        }
+        input {
+            width: 100%;
+            height: 40px;
+            margin: 10px 0 20px 0;
+            outline: none;
+            padding: 5px;
+        }
+
+        #submit:hover {
+            opacity: 1;
+        }
+        #submit {
+            background-color: #3f89ec;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            height: 40px;
+            opacity: .7;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="info">利用 localStorage 储存用户名密码，请点击登录按钮后刷新页面查看效果</p>
+    <div class="container">
+        <p> 用户名：</p>
+        <p>
+            <input id="username" type="text" name="username">
+        </p>
+        <p>密码：</p>
+        <p>
+            <input id="pwd" type="password" name="pwd">
+        </p>
+        <p><input id="submit" type="button" value="登录"></p>
+    </div>
+
+    <script>
+        var username = getDom('username')
+        var pwd = getDom('pwd')
+        var submit = getDom('submit')
+
+        setValue();
+
+        function getDom(id) {
+            return document.getElementById(id);
+        }
+
+        submit.onclick = function () {
+            var userData = {
+                username: username.value,
+                pwd: pwd.value
+            }
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function setValue() {
+            var userData = localStorage.getItem('userData');
+            if (userData) {
+                userData = JSON.parse(userData);
+                username.value = userData.username;
+                pwd.value = userData.pwd;
+            }
+        }
+    </script>
+</body>
+
+</html>
