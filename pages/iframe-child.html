@@ -94,7 +94,7 @@
             <p>你是人间的四月天！</p>
         </div>
     </div>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> -->
     <script>
         var more = document.getElementsByClassName('more')[0];
         var less = document.getElementsByClassName('less')[0];
@@ -117,7 +117,9 @@
             var iframe = window.parent.document.getElementById('iframe');
             iframe.style.height = iframeHeight + 'px';
         }
-
+        // function resizeIframeParentHeight() {
+        //    $("#iframe", window.parent.document).css('height', $('body').outerHeight());
+        // }
     </script>
 </body>
 
