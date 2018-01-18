@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>你是人间的四月天</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'microsoft Yahei';
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .author {
+            color: #ccc;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .container {
+            position: relative;
+            margin: 0 auto;
+            padding-top: 20px;
+            width: 400px;
+        }
+
+        .content {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .more, .less {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+        }
+        .less {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>你是人间的四月天</h1>
+    <p class="author">林徽因</p>
+    <div class="container">
+        <button class="more">展开全部</button>
+        <button class="less">收回</button>
+        <div class="content">
+
+            <p>我说你是人间的四月天；</p>
+
+            <p>笑响点亮了四面风；</p>
+
+            <p>轻灵在春的光艳中交舞着变。</p>
+
+            <p>你是四月早天里的云烟，</p>
+
+            <p>黄昏吹着风的软，星子在</p>
+
+            <p>无意中闪，细雨点洒在花前。</p>
+
+            <p>那轻，那娉婷，你是，</p>
+
+            <p>鲜妍百花的冠冕，你戴着，</p>
+
+            <p>你是天真，庄严，</p>
+
+            <p>你是夜夜的月圆。</p>
+
+            <p>雪化后那篇鹅黄，你象；新鲜</p>
+
+            <p>初放芽的绿，你是；柔嫩喜悦</p>
+
+            <p>水光浮动着你梦期待中白莲。</p>
+
+            <p>你是一树一树的花开，</p>
+
+            <p>是燕在梁间呢喃，</p>
+
+            <p>——你是爱，是暖，是希望，</p>
+
+            <p>你是人间的四月天！</p>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var more = document.getElementsByClassName('more')[0];
+        var less = document.getElementsByClassName('less')[0];
+        var content = document.getElementsByClassName('content')[0];
+        more.onclick = function () {
+            content.style.height = 'auto';
+            less.style.display = 'block';
+            more.style.display = 'none';
+            window.parent && resizeIframeParentHeight();
+        }
+        less.onclick = function () {
+            content.style.height = '200px';
+            more.style.display = 'block';
+            less.style.display = 'none';
+            window.parent && resizeIframeParentHeight();
+        }
+
+        function resizeIframeParentHeight() {
+            var iframeHeight = document.body.scrollHeight;
+            var iframe = window.parent.document.getElementById('iframe');
+            iframe.style.height = iframeHeight + 'px';
+        }
+
+    </script>
+</body>
+
+</html>
