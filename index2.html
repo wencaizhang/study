@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo 演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            color: lightseagreen
+        }
+        h1, h2, h3, h4 {
+            font: 500 16px 'microsoft Yahei';
+        }
+        ul {
+            margin: 10px 50px;
+        }
+        ul li {
+            border: 1px solid #ccc;
+            border-bottom: 0;
+            padding: 6px 10px;  
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+
+    <script>
+
+        var data = [
+            {
+                name: '萌萌哒的按钮',
+                link: 'pages/button.html',
+                tags: ['css']
+            }, {
+                name: '旋转木马',
+                link: './旋转木马/carrousel.html',
+            }, {
+                name: '手风琴',
+                link: './手风琴/accordion.html',
+            }, {
+                name: 'fullPage 基本演示',
+                link: './fullPage/fullPage-01基本演示.html',
+            }, {
+                name: 'fullPage 背景演示',
+                link: './fullPage/fullPage-02背景演示.html',
+            }, {
+                name: 'fullPage 循环演示',
+                link: './fullPage/fullPage-03循环演示.html',
+            }, {
+                name: 'fullPage 绑定菜单',
+                link: './fullPage/fullPage-04绑定菜单.html',
+            }, {
+                name: 'fullPage 分页导航',
+                link: './fullPage/fullPage-05分页导航.html',
+            }, {
+                name: 'FlappyBird',
+                link: 'Canvas/FlappyBird.html',
+            }, {
+                name: '七巧板',
+                link: 'Canvas/七巧板.html',
+            }, {
+                name: '网状粒子效果',
+                link: 'Canvas/网状粒子效果.html',
+            }, {
+                name: 'JS实现时钟效果',
+                link: 'pages/JS实现时钟效果.html',
+            }, {
+                name: '全选反选',
+                link: 'pages/select-all-or-none.html',
+            }, {
+                name: '自定义单复选按钮样式',
+                link: '单选复选按钮/index.html',
+            }, {
+                name: '锚点',
+                link: '锚点/index.html',
+            }, {
+                name: '楼层跳跃',
+                link: 'pages/floor-jump.html',
+            }, {
+                name: '三级联动',
+                link: 'pages/linkage.html',
+            }, {
+                name: 'css 实现三角形',
+                link: 'icon-angle/index.html',
+            }, {
+                name: 'checkbox',
+                link: 'checkbox/demo.html',
+            }, {
+                name: '高亮文章目录当前章节',
+                link: 'pages/active-current-title.html',
+            }, {
+                name: '有意思的固定定位',
+                link: 'pages/fixedPosition.html',
+            }, {
+                name: 'debounce-and-throtte',
+                link: 'debounce-and-throtte/index.html',
+            }, {
+                name: '自定义滚动条',
+                link: 'pages/scrollbar.html',
+            }, {
+                name: '网页进度条',
+                link: 'https://c.runoob.com/iframe/5066',
+            }, {
+                name: '正方体动画',
+                link: 'CSS3/CSS3-正方体动画.html',
+            }, {
+                name: '鼠标滑过放大效果',
+                link: 'CSS3/鼠标滑过放大效果.html',
+            }, {
+                name: 'emoji',
+                link: 'pages/emoji-input.html',
+            }, {
+                name: 'jq2048',
+                link: 'pages/jq2048.html',
+            }
+        ]
+        
+        var str = '';
+        data.forEach(function(item, index) {
+            str += '<li><h4><a target="_blank" href="' + item.link + '">' + item.name + '</a></h4></li>'
+        })
+
+        var ul = document.querySelector('ul')
+        ul.innerHTML = str;
+    </script>
+</body>
+
+</html>
