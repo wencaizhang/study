@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三级联动</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 50px auto;  
+        }
+        select {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <select class="select1">
+            <option value="请选择">请选择</option>
+        </select>
+        <select class="select2">
+            <option value="请选择">请选择</option>
+        </select>
+        <select class="select3">
+            <option value="请选择">请选择</option>
+        </select>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var data = [
+            {
+                name: '河南',
+                id: 'henan',
+                children: [
+                    { 
+                        name: '郑州',
+                        id: 'zz',
+                        children: [
+                            { name: '郑州aaaa' },
+                            { name: '郑州bbbb' },
+                            { name: '郑州cccc' },
+                        ]
+                    },
+                    { 
+                        name: '平顶山',
+                        id: 'pds',
+                        children: [
+                            { name: '平顶山aaaa' },
+                            { name: '平顶山bbbb' },
+                            { name: '平顶山cccc' },
+                        ]
+                    },
+                ]
+            },{
+                name: '内蒙',
+                id: 'neimeng',
+                children: [
+                    { 
+                        name: '呼和浩特',
+                        id: 'hhht',
+                        children: [
+                            { name: '呼和浩特aaaa' },
+                            { name: '呼和浩特bbbb' },
+                            { name: '呼和浩特cccc' },
+                        ] 
+                    },
+                    { 
+                        name: '赤峰',
+                        id: 'cf',
+                        children: [
+                            { name: '赤峰aaaa' },
+                            { name: '赤峰bbbb' },
+                            { name: '赤峰cccc' },
+                        ] 
+                    }
+                ]
+            },{
+                name: '河北',
+                id: 'hebei',
+                children: [
+                    { 
+                        name: '石家庄',
+                        id: 'sjz',
+                        children: [
+                            { name: '石家庄aaaa' },
+                            { name: '石家庄bbbb' },
+                            { name: '石家庄cccc' },
+                        ] 
+                    },
+                    { 
+                        name: '保定',
+                        id: 'bd',
+                        children: [
+                            { name: '保定aaaa' },
+                            { name: '保定bbbb' },
+                            { name: '保定cccc' },
+                        ] 
+                    },
+                ]
+            }
+        ]
+
+        var select_1_html = buildUI(data);
+        $('.select1').append(select_1_html)
+
+        $('.select1').on('change', function () {
+            var selectedValue = $('.select1').find("option:selected")[0].value;
+            
+            for (var i = 0; i < data.length; i++){
+                var item = data[i]
+                if (item.id === selectedValue) {
+                    var select_2_html = buildUI(item.children)
+                    $('.select2').html(select_2_html);
+                    $('.select2').trigger('change')
+                }
+            }
+        })
+        $('.select2').on('change', function () {
+            var selectedValue1 = $('.select1').find("option:selected")[0].value;
+            var selectedValue2 = $('.select2').find("option:selected")[0].value;
+            for (var i = 0; i < data.length; i++){
+                var item = data[i]
+                if (item.id === selectedValue1) {
+
+                    for (var i = 0; i < item.children.length; i++){
+                        var item2 = item.children[i]
+                        if (item2.id === selectedValue2) {
+                            var select_3_html = buildUI(item2.children)
+                            $('.select3').html(select_3_html)
+                        }
+                    }
+
+                }
+            }
+        })
+
+        function buildUI (data) {
+            var str = '';
+            for (var i = 0; i < data.length; i++){
+                var item = data[i]
+                str += '<option value="' + item.id + '">' + item.name + '</option>'
+            }
+            return str;
+        }
+    </script>
+</body>
+
+</html>
