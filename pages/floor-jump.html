@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        .container {
+            height: 500%;
+        }
+        .container .floor {
+            height: 20%;
+            background-color: lightblue;
+        }
+
+        .container .floor h3 {
+            text-align: center;
+            line-height: 400px;
+        }
+
+        .container .floor:nth-child(2n+0) {
+            background: #ff0000;
+        }
+
+        .btn-group {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            background:chartreuse;
+            width: 40px;
+        }
+        .btn-group button {
+            width: 100%;
+            height: 26px;
+            line-height: 26px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+        .btn-group button.active {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-group">
+        <button>一楼</button>
+        <button>二楼</button>
+        <button>三楼</button>
+        <button>四楼</button>
+        <button>五楼</button>
+    </div>
+    <div class="container">
+        <div class="floor active">
+            <h3>一楼</h3>
+        </div>
+        <div class="floor">
+            <h3>二楼</h3>
+        </div>
+        <div class="floor">
+            <h3>三楼</h3>
+        </div>
+        <div class="floor">
+            <h3>四楼</h3>
+        </div>
+        <div class="floor">
+            <h3>五楼</h3>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var $btns = $('.btn-group button');
+            var $floors = $('.container .floor');
+            var $body = $('html,body');
+            var activeClass = 'active';
+
+            $btns.each(function (index, btn) {
+                var self = this;
+
+                $(self).on('click', function () {
+                    $btns.removeClass(activeClass);
+                    $(self).addClass(activeClass);
+                    $body.animate({
+                        scrollTop: $floors.eq(index).offset().top
+                    });
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>
