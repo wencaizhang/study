@@ -98,6 +98,7 @@
 	.filter-container {
 	    position: relative;
 	    display: inline-block;
+	    margin-bottom: 10px;
 	}
 	.filters {
 	    position: absolute;
@@ -107,24 +108,24 @@
     </style>
 </head>
 <body>
-<div class="container">
-	<div class="filter-container">
-		<input type="button" class="filter" value="Filters">
-		<input type="text" placeholder="请输入关键字">
-		<input type="button" class="search" value="搜索">
-		<div class="filters hidden">
-		    <span>js</span>
-		    <span>jquery</span>
-		    <span>css</span>
-		    <span>canvas</span>
+	<div class="container">
+		<div class="filter-container">
+			<input type="button" class="filter" value="Filters">
+			<input type="text" placeholder="请输入关键字" autofocus>
+			<input type="button" class="search" value="搜索">
+			<div class="filters hidden">
+			    <span>js</span>
+			    <span>jquery</span>
+			    <span>css</span>
+			    <span>canvas</span>
+			</div>
 		</div>
+		<hr>
+	    <ul class="card-list">
+	    </ul>
 	</div>
-    <ul class="card-list">
-    </ul>
-</div>
 
     <script>
-
         var data = [
             {
                 name: '流星雨',
@@ -274,6 +275,11 @@
 	btn.addEventListener('click', function(){
 	    var val = input.value;
             renderUI(val); 
+	})
+	input.addEventListener('keyup', function(e){
+	    if (e.keyCode !== 13) return;
+	    var val = input.value;
+	    renderUI(val); 
 	})
 
 	var filter = document.querySelector('.filter')
