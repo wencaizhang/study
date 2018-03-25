@@ -9,27 +9,37 @@
             margin: 0;
             padding: 0;
         }
+
         li {
             list-style: none;
         }
+
         a {
             color: #000;
-	    text-decoration: none;
+            text-decoration: none;
         }
-	a:hover {
+
+        a:hover {
             color: #0366d6;
-	}
-        h1, h2, h3, h4 {
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
             font: 500 16px 'microsoft Yahei';
         }
-	.container {
-	    text-align: center;
-	    padding-top: 10px;
-	}
+
+        .container {
+            text-align: center;
+            padding-top: 10px;
+        }
+
         ul {
             margin: 10px 50px;
-	    display: inline-block;
+            display: inline-block;
         }
+
         ul li {
             border: 1px solid #ccc;
             padding: 6px 10px;
@@ -38,92 +48,126 @@
             height: 120px;
             vertical-align: top;
             margin: 5px;
-	    background-color: aliceblue;
+            background-color: aliceblue;
         }
+
         ul li:hover {
-           /* border-color: #0366d6; */
-	   cursor: pointer;
-    	   box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+            /* border-color: #0366d6; */
+            cursor: pointer;
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
         }
-	/*
-	ul li a {
-	    display: block;
-	    height: 100%;
-	    width: 100%;
-	}
-	*/
-	ul li h4 {
-	    margin-bottom: 20px;
-	}
-	ul li .tag {
-	    display: inline-block;
-	    border: 1px solid #f2f2f2;
-	    border-radius: 5px;
-	    font-size: 14px;
-	    vertical-align: bottom;
-	    padding: 2px 6px;
-	    margin: 2px;
-	}
+
+        /*
+        ul li a {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+        */
+
+        ul li h4 {
+            margin-bottom: 20px;
+        }
+
+        ul li .tag {
+            display: inline-block;
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+            font-size: 14px;
+            vertical-align: bottom;
+            padding: 2px 6px;
+            margin: 2px;
+        }
 
 
-	input {
-	    height: 30px;
-	    line-height: 30px;
-	    border: 1px solid #ccc;
-	    outline: none;
-	}
-	input[type="text"] {
-	    text-indent: 10px;
-	}
-	input[type="button"] {
-	    padding: 0 10px;
-	    background-color: #fff;
-	    border: 1px solid #ccc;
-	    outline: none;
-	}
-	.filters span {
-	    display: block;
-	    width: 100px;
-	    text-align: left;
-	    padding: 6px 15px;
-	    border: 1px solid #ccc;
-	    border-bottom: 0;
-	}
-	.filters span:last-child {
-	    border-bottom: 1px solid #ccc;
-	}
-	.hidden {
-	    display: none;
-	}
-	.filter-container {
-	    position: relative;
-	    display: inline-block;
-	    margin-bottom: 10px;
-	}
-	.filters {
-	    position: absolute;
-	    left: 0;
-	    background-color: #fff;
-	}
+        input {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input[type="text"] {
+            text-indent: 10px;
+        }
+
+        input[type="button"] {
+            padding: 0 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .filters span {
+            display: block;
+            width: 100px;
+            text-align: left;
+            padding: 6px 15px;
+            border: 1px solid #ccc;
+            border-bottom: 0;
+        }
+
+        .filters span:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .filter-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .filters {
+            position: absolute;
+            left: 0;
+            background-color: #fff;
+        }
+
+        .github,
+        .github span,
+        .github a {
+            vertical-align: bottom;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+        }
+        .github .gh-ico {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url(lib/images/github.png);
+            background-size: contain;
+        }
     </style>
 </head>
+
 <body>
-	<div class="container">
-		<div class="filter-container">
-			<input type="button" class="filter" value="Filters">
-			<input type="text" placeholder="请输入关键字" autofocus>
-			<input type="button" class="search" value="搜索">
-			<div class="filters hidden">
-			    <span>js</span>
-			    <span>jquery</span>
-			    <span>css</span>
-			    <span>canvas</span>
-			</div>
-		</div>
-		<hr>
-	    <ul class="card-list">
-	    </ul>
-	</div>
+    <div class="container">
+        <div class="filter-container">
+            <input type="button" class="filter" value="Filters">
+            <input type="text" placeholder="请输入关键字" autofocus>
+            <input type="button" class="search" value="搜索">
+            <div class="filters hidden">
+                <span>js</span>
+                <span>jquery</span>
+                <span>css</span>
+                <span>canvas</span>
+            </div>
+            <div class="github">
+                <a class="gh-btn" href="https://github.com/wencaizhang/demo/" target="_blank">
+                    <span class="gh-ico"></span>
+                    <span class="gh-text">Star</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <ul class="card-list">
+        </ul>
+    </div>
 
     <script>
         var data = [
@@ -246,47 +290,47 @@
             }
         ]
 
-	renderUI();
-	function renderUI (filter) {
-		var str = '';
-		var reg = new RegExp(filter);
-		data.forEach(function(item, index) {
-			var isRelated = filter ? false : true;
-			var strTag = '';
-			item.tags.forEach(function(tag) {
-				if (reg.test(tag)) {
-					isRelated = true;
-				}
-				strTag += '<span class="tag">#' + tag + '</span>'
-			})
-			if (reg.test(item.name)) {
-				isRelated = true;
-			}
-			str += !isRelated ? '' :'<li><h4><a target="_blank" href="' + item.link + '">' + item.name + '</h4></a>' + strTag + '</li>'
-		})
-		var ul = document.querySelector('.card-list')
-		ul.innerHTML = str;
-	}
+        renderUI();
+        function renderUI(filter) {
+            var str = '';
+            var reg = new RegExp(filter);
+            data.forEach(function (item, index) {
+                var isRelated = filter ? false : true;
+                var strTag = '';
+                item.tags.forEach(function (tag) {
+                    if (reg.test(tag)) {
+                        isRelated = true;
+                    }
+                    strTag += '<span class="tag">#' + tag + '</span>'
+                })
+                if (reg.test(item.name)) {
+                    isRelated = true;
+                }
+                str += !isRelated ? '' : '<li><h4><a target="_blank" href="' + item.link + '">' + item.name + '</h4></a>' + strTag + '</li>'
+            })
+            var ul = document.querySelector('.card-list')
+            ul.innerHTML = str;
+        }
 
 
-	var btn = document.querySelector('.search')
-	var input = document.querySelector('input[type="text"]');
+        var btn = document.querySelector('.search')
+        var input = document.querySelector('input[type="text"]');
 
-	btn.addEventListener('click', function(){
-	    var val = input.value;
-            renderUI(val); 
-	})
-	input.addEventListener('keyup', function(e){
-	    if (e.keyCode !== 13) return;
-	    var val = input.value;
-	    renderUI(val); 
-	})
+        btn.addEventListener('click', function () {
+            var val = input.value;
+            renderUI(val);
+        })
+        input.addEventListener('keyup', function (e) {
+            if (e.keyCode !== 13) return;
+            var val = input.value;
+            renderUI(val);
+        })
 
-	var filter = document.querySelector('.filter')
-	var filters = document.querySelector('.filters')
-	filter.addEventListener('click', function(){
-		filters.classList.toggle('hidden')
-	})
+        var filter = document.querySelector('.filter')
+        var filters = document.querySelector('.filters')
+        filter.addEventListener('click', function () {
+            filters.classList.toggle('hidden')
+        })
     </script>
 </body>
 
