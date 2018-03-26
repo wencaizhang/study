@@ -354,7 +354,8 @@
                 }
                 str += !isRelated ? '' : '<li><h4><a target="_blank" href="' + item.link + '">' + item.name + '</h4></a>' + strTag + '</li>'
             })
-            var ul = document.querySelector('.card-list')
+            var ul = document.querySelector('.card-list');
+            str = str ? str : '<p>404 Not Found!</p><p>没有匹配的结果，不如换个关键词试试。</p>'
             ul.innerHTML = str;
         }
 
