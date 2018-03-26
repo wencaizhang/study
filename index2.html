@@ -10,6 +10,10 @@
             padding: 0;
         }
 
+        body {
+            letter-spacing: 1px;
+        }
+
         li {
             list-style: none;
         }
@@ -66,7 +70,7 @@
         */
 
         ul li h4 {
-	        height: 50%;
+            height: 50%;
         }
 
         ul li .tag {
@@ -85,6 +89,8 @@
             line-height: 30px;
             border: 1px solid #ccc;
             outline: none;
+            box-sizing: border-box;
+            vertical-align: bottom;
         }
 
         input[type="text"] {
@@ -96,6 +102,7 @@
             background-color: #fff;
             border: 1px solid #ccc;
             outline: none;
+            cursor: pointer;
         }
 
         .filters span {
@@ -125,6 +132,12 @@
             position: absolute;
             left: 0;
             background-color: #fff;
+            cursor: pointer;
+        }
+
+        .filters span:hover {
+            color: #fff;
+            background-color: #0366d6;
         }
 
         .github,
@@ -135,6 +148,7 @@
             height: 40px;
             line-height: 40px;
         }
+
         .github .gh-ico {
             display: inline-block;
             width: 40px;
@@ -142,15 +156,47 @@
             background: url(lib/images/github.png);
             background-size: contain;
         }
+
+
+        button {
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            outline: none;
+            box-sizing: border-box;
+            vertical-align: bottom;
+            background-color: #fff;
+            color: #444d56;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        .filter {
+            padding-left: 10px;
+            padding-right: 22px;
+        }
+
+        .filter::after {
+            content: '';
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            margin-top: -3px;
+            border: 6px solid transparent;
+            border-top-color: #bbb;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="filter-container">
-            <input type="button" class="filter" value="Filters">
+            <button class="filter">快速搜索</button>
             <input type="text" placeholder="请输入关键字" autofocus>
-            <input type="button" class="search" value="搜索">
+            <button class="search">搜索</button>
             <div class="filters hidden">
                 <span>js</span>
                 <span>jquery</span>
@@ -312,9 +358,12 @@
             ul.innerHTML = str;
         }
 
-
+        var body = document.querySelector('body');
         var btn = document.querySelector('.search')
         var input = document.querySelector('input[type="text"]');
+        var filter = document.querySelector('.filter');
+        var filters = document.querySelector('.filters');
+        var filterItem = document.querySelectorAll('.filters span');
 
         btn.addEventListener('click', function () {
             var val = input.value;
@@ -326,10 +375,21 @@
             renderUI(val);
         })
 
-        var filter = document.querySelector('.filter')
-        var filters = document.querySelector('.filters')
-        filter.addEventListener('click', function () {
-            filters.classList.toggle('hidden')
+        filter.addEventListener('click', function (e) {
+            e.stopPropagation();
+            filters.classList.toggle('hidden');
+        })
+
+        body.addEventListener('click', function (e) {
+            filters.classList.add('hidden')
+        })
+
+        filterItem.forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                var val = e.target.innerText;
+                input.value = val;
+                renderUI(val);
+            })
         })
     </script>
 </body>
