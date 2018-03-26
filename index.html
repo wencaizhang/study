@@ -4,311 +4,439 @@
 <head>
     <meta charset="utf-8">
     <title>Demo 演示</title>
-    <link rel="stylesheet" href="./lib/css/metroStyle/metroStyle.css" type="text/css">
     <style>
-        body {
-            background-color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        div,
-        p,
-        table,
-        th,
-        td {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            font-size: 12px;
-            font-family: dotum, Verdana, Arial, Helvetica, AppleGothic, sans-serif;
-        }
-
-        #testIframe {
-            margin-left: 10px;
-        }
-
         * {
-            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        html,
         body {
-            height: 100%;
+            letter-spacing: 1px;
         }
 
-        .wraper {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            padding: 20px;
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0366d6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font: 500 16px 'microsoft Yahei';
         }
 
         .container {
-            height: 100%;
-            padding-left: 300px;
-            border: 3px solid saddlebrown;
+            text-align: center;
+            padding-top: 10px;
         }
 
-        .ztree {
-            height: 100%;
-            width: 300px;
-            float: left;
-            margin-left: -300px;
-            background-color: lightcoral;
+        ul {
+            margin: 10px 50px;
+            display: inline-block;
         }
 
+        ul li {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            display: inline-block;
+            width: 140px;
+            height: 120px;
+            vertical-align: top;
+            margin: 5px;
+            background-color: aliceblue;
+        }
 
-        iframe {
+        ul li:hover {
+            /* border-color: #0366d6; */
+            cursor: pointer;
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+        }
+
+        /*
+        ul li a {
+            display: block;
+            height: 100%;
             width: 100%;
-            height: 100%;
+        }
+        */
+
+        ul li h4 {
+            height: 50%;
+        }
+
+        ul li .tag {
+            display: inline-block;
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+            font-size: 14px;
+            vertical-align: bottom;
+            padding: 2px 6px;
+            margin: 2px;
+        }
+
+
+        input {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            outline: none;
+            box-sizing: border-box;
+            vertical-align: bottom;
+        }
+
+        input[type="text"] {
+            text-indent: 10px;
+            border-radius: 3px;
+        }
+
+        .filters span {
+            display: block;
+            width: 100px;
+            text-align: left;
+            padding: 6px 15px;
+            border: 1px solid #ccc;
+            border-bottom: 0;
+        }
+
+        .filters span:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .filter-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .filters {
+            position: absolute;
+            left: 0;
+            background-color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+            border-radius: 3px;
+        }
+
+        .filters span:hover {
+            color: #fff;
+            background-color: #0366d6;
+        }
+
+        .github,
+        .github span,
+        .github a {
+            vertical-align: bottom;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .github .gh-ico {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url(lib/images/github.png);
+            background-size: contain;
+        }
+
+
+        button {
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            outline: none;
+            box-sizing: border-box;
+            vertical-align: bottom;
+            background-color: #fff;
+            color: #444d56;
+            padding: 0 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .filter {
+            padding-left: 10px;
+            padding-right: 22px;
+        }
+
+        .filter::after {
+            content: '';
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            margin-top: -3px;
+            border: 6px solid transparent;
+            border-top-color: #bbb;
+        }
+
+
+        .clear-filter-content:hover {
+            color: #0366d6;
+        }
+
+        .clear-filter-content:hover .icon {
+            border-color: #0366d6;
+        }
+
+        .clear-filter-container {
+            color: #586069;
+            text-align: left;
+            margin-top: 15px;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .clear-filter-content {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .clear-filter-container .icon {
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            border: 1px solid #586069;
+            margin-right: 8px;
+            margin-left: 1px;
         }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="filter-container">
+            <button class="filter">快速搜索</button>
+            <input type="text" placeholder="请输入关键字" autofocus>
+            <button class="search-btn">搜索</button>
+            <div class="filters hidden">
+                <span>js</span>
+                <span>jquery</span>
+                <span>css</span>
+                <span>canvas</span>
+            </div>
+            <div class="github">
+                <a class="gh-btn" href="https://github.com/wencaizhang/study/" target="_blank">
+                    <span class="gh-ico"></span>
+                    <span class="gh-text">Star</span>
+                </a>
+            </div>
+            <div class="clear-filter-container">
+                <div class="clear-filter-content">
+                    <span class="icon">×</span>
+                    <span class="text">清除当前的查询条件</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <ul class="card-list">
+        </ul>
+    </div>
 
-    <script type="text/javascript" src="./lib/js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="./lib/js/jquery.ztree.core.js"></script>
     <script>
-        var zTree;
-        var demoIframe;
-
-        var setting = {
-            view: {
-                dblClickExpand: false,
-                showLine: true,
-                selectedMulti: false
-            },
-            data: {
-                simpleData: {
-                    enable: true,
-                    idKey: "id",
-                    pIdKey: "pId",
-                    rootpId: ""
-                }
-            },
-            callback: {
-                beforeClick: function (treeId, treeNode) {
-                    var zTree = $.fn.zTree.getZTreeObj("tree");
-                    if (treeNode.isParent) {
-                        zTree.expandNode(treeNode);
-                        return false;
-                    } else {
-                        demoIframe.attr("src", treeNode.link);
-                        return true;
-                    }
-                }
-            }
-        };
-        var zNodes = [
-            {   
-                id: 1, 
-                pId: 0, 
-                name: "[core] CSS 类",
-                open: true 
-            },
-            {   
-                id: 2, 
-                pId: 0, 
-                name: "[core] JS 类",
-                open: true 
-            },
-            {   
-                id: 3, 
-                pId: 0, 
-                name: "[core] 其他 类",
-                open: true 
-            },
+        var data = [
             {
-                pId: 3,
+                name: '流星雨',
+                link: 'pages/star-shower.html',
+                tags: ['canvas']
+            }, {
                 name: '萌萌哒的按钮',
                 link: 'pages/button.html',
-            },
-            {
-                pId: 1,
+                tags: ['css']
+            }, {
                 name: '旋转木马',
                 link: './旋转木马/carrousel.html',
-            },
-            {
-                pId: 1,
+                tags: ['js']
+            }, {
                 name: '手风琴',
                 link: './手风琴/accordion.html',
-            },
-            {
-                pId: 2,
-                name: 'fullPage.js',
-                children: [
-                    {
-                        pId: 103,
-                        name: '基本演示',
-                        link: './fullPage/fullPage-01基本演示.html',
-                    },
-                    {
-                        pId: 103,
-                        name: '背景演示',
-                        link: './fullPage/fullPage-02背景演示.html',
-                    },
-                    {
-                        pId: 103,
-                        name: '循环演示',
-                        link: './fullPage/fullPage-03循环演示.html',
-                    },
-                    {
-                        pId: 103,
-                        name: '绑定菜单',
-                        link: './fullPage/fullPage-04绑定菜单.html',
-                    },
-                    {
-                        pId: 103,
-                        name: '分页导航',
-                        link: './fullPage/fullPage-05分页导航.html',
-                    },
-                ]
-            },
-            {
-                pId: 1,
-                name: 'Canvas',
-                children: [
-                    {
-                        pId: 104,
-                        name: 'FlappyBird',
-                        link: 'Canvas/FlappyBird.html',
-                    },
-                    {
-                        pId: 104,
-                        name: '七巧板',
-                        link: 'Canvas/七巧板.html',
-                    },
-                    {
-                        pId: 104,
-                        name: '网状粒子效果',
-                        link: 'Canvas/网状粒子效果.html',
-                    },
-                ]
-            },
-            {
-                pId: 2,
+                tags: ['js']
+            }, {
+                name: 'fullPage 基本演示',
+                link: './fullPage/fullPage-01基本演示.html',
+                tags: ['js', 'jquery', 'fullpage']
+            }, {
+                name: 'fullPage 背景演示',
+                link: './fullPage/fullPage-02背景演示.html',
+                tags: ['js', 'jquery', 'fullpage']
+            }, {
+                name: 'fullPage 循环演示',
+                link: './fullPage/fullPage-03循环演示.html',
+                tags: ['js', 'jquery', 'fullpage']
+            }, {
+                name: 'fullPage 绑定菜单',
+                link: './fullPage/fullPage-04绑定菜单.html',
+                tags: ['js', 'jquery', 'fullpage']
+            }, {
+                name: 'fullPage 分页导航',
+                link: './fullPage/fullPage-05分页导航.html',
+                tags: ['js', 'jquery', 'fullpage']
+            }, {
+                name: 'FlappyBird',
+                link: 'Canvas/FlappyBird.html',
+                tags: ['canvas']
+            }, {
+                name: '七巧板',
+                link: 'Canvas/七巧板.html',
+                tags: ['canvas']
+            }, {
+                name: '网状粒子效果',
+                link: 'Canvas/网状粒子效果.html',
+                tags: ['canvas']
+            }, {
                 name: 'JS实现时钟效果',
                 link: 'pages/JS实现时钟效果.html',
-            },
-            {
-                pId: 2,
+                tags: ['js']
+            }, {
                 name: '全选反选',
                 link: 'pages/select-all-or-none.html',
-            },
-            {
-                pId: 1,
+                tags: ['js']
+            }, {
                 name: '自定义单复选按钮样式',
                 link: '单选复选按钮/index.html',
-            },
-            {
-                pId: 2,
+                tags: ['css']
+            }, {
                 name: '锚点',
                 link: '锚点/index.html',
-},
-            {
-                pId: 3,
+                tags: ['js']
+            }, {
                 name: '楼层跳跃',
                 link: 'pages/floor-jump.html',
-            },
-                        {
-                pId: 4,
+                tags: ['js', 'jquery']
+            }, {
                 name: '三级联动',
                 link: 'pages/linkage.html',
-            },
-            {
-                pId: 1,
+                tags: ['js', 'jquery']
+            }, {
                 name: 'css 实现三角形',
                 link: 'icon-angle/index.html',
-            },
-            {
-                pId: 1,
+                tags: ['css']
+            }, {
                 name: 'checkbox',
                 link: 'checkbox/demo.html',
-            },
-            {
-                pId: 2,
+                tags: ['js']
+            }, {
                 name: '高亮文章目录当前章节',
                 link: 'pages/active-current-title.html',
-            },
-            {
-                pId: 2,
+                tags: ['js']
+            }, {
                 name: '有意思的固定定位',
                 link: 'pages/fixedPosition.html',
-            },
-            {
-                pId: 1,
+                tags: ['js']
+            }, {
                 name: 'debounce-and-throtte',
                 link: 'debounce-and-throtte/index.html',
-            },
-            {
-                pId: 1,
+                tags: ['js']
+            }, {
                 name: '自定义滚动条',
                 link: 'pages/scrollbar.html',
-            },
-            {
-                pId: 1,
+                tags: ['css']
+            }, {
                 name: '网页进度条',
                 link: 'https://c.runoob.com/iframe/5066',
-            },
-            {
-                pId: 1,
-                name: 'CSS 效果',
-                children: [
-                    {
-                        pId: 104,
-                        name: '正方体动画',
-                        link: 'CSS3/CSS3-正方体动画.html',
-                    },
-                    {
-                        pId: 104,
-                        name: '鼠标滑过放大效果',
-                        link: 'CSS3/鼠标滑过放大效果.html',
-                    },
-        
-                ]
-            },
-            {
-                pId: 1,
+                tags: ['css']
+            }, {
+                name: '正方体动画',
+                link: 'CSS3/CSS3-正方体动画.html',
+                tags: ['css']
+            }, {
+                name: '鼠标滑过放大效果',
+                link: 'CSS3/鼠标滑过放大效果.html',
+                tags: ['css']
+            }, {
                 name: 'emoji',
                 link: 'pages/emoji-input.html',
-            },
-            {
-                pId: 2,
+                tags: ['js']
+            }, {
                 name: 'jq2048',
                 link: 'pages/jq2048.html',
-            },
+                tags: ['js', 'jquery']
+            }
         ]
+        var body = document.querySelector('body');
+        var searchBtn = document.querySelector('.search-btn')
+        var input = document.querySelector('input[type="text"]');
+        var filter = document.querySelector('.filter');
+        var filters = document.querySelector('.filters');
+        var filterItem = document.querySelectorAll('.filters span');
+        var clearFilterContainer = document.querySelector('.clear-filter-container');
+        var clearFilterContent = document.querySelector('.clear-filter-content');
 
-        $(document).ready(function () {
-            var t = $("#tree");
-            t = $.fn.zTree.init(t, setting, zNodes);
-            demoIframe = $("#testIframe");
-            demoIframe.bind("load", loadReady);
-            var zTree = $.fn.zTree.getZTreeObj("tree");
-            zTree.selectNode(zTree.getNodeByParam("id", 101));
-
-        });
-
-        function loadReady() {
-            var bodyH = demoIframe.contents().find("body").get(0).scrollHeight,
-                htmlH = demoIframe.contents().find("html").get(0).scrollHeight,
-                maxH = Math.max(bodyH, htmlH), minH = Math.min(bodyH, htmlH),
-                h = demoIframe.height() >= maxH ? minH : maxH;
-            if (h < 530) h = 530;
-            demoIframe.height(h);
+        renderUI();
+        function renderUI(filter) {
+            var str = '';
+            var reg = new RegExp(filter);
+            data.forEach(function (item, index) {
+                var isRelated = filter ? false : true;
+                var strTag = '';
+                item.tags.forEach(function (tag) {
+                    if (reg.test(tag)) {
+                        isRelated = true;
+                    }
+                    strTag += '<span class="tag">#' + tag + '</span>'
+                })
+                if (reg.test(item.name)) {
+                    isRelated = true;
+                }
+                str += !isRelated ? '' : '<li><h4><a target="_blank" href="' + item.link + '">' + item.name + '</h4></a>' + strTag + '</li>'
+            })
+            var ul = document.querySelector('.card-list');
+            str = str ? str : '<p style="margin: 5px;">404 Not Found!</p><p>没有匹配的结果，建议使用快速搜索或者换个关键词试试。</p>'
+            ul.innerHTML = str;
+            filter ? clearFilterContainer.classList.remove('hidden') : clearFilterContainer.classList.add('hidden')
         }
-    </script>
 
-    <div class="container">
-        <div id="tree" class="ztree"></div>
-        <div class="wraper">
-            <iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO SRC="https://c.runoob.com/front-end/61"></iframe>
-        </div>
-    </div>
+
+        clearFilterContent.addEventListener('click', function () {
+            input.value = '';
+            input.focus();
+            renderUI();
+        })
+
+        searchBtn.addEventListener('click', function () {
+            renderUI(input.value);
+        })
+        input.addEventListener('keyup', function (e) {
+            if (e.keyCode !== 13) return;
+            var val = input.value;
+            renderUI(val);
+        })
+
+        filter.addEventListener('click', function (e) {
+            e.stopPropagation();
+            filters.classList.toggle('hidden');
+        })
+
+        body.addEventListener('click', function (e) {
+            filters.classList.add('hidden')
+        })
+
+        filterItem.forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                var val = e.target.innerText;
+                input.value = val;
+                renderUI(val);
+            })
+        })
+    </script>
 </body>
 
 </html>

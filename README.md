@@ -1,3 +1,3 @@
 
 
-### https://wencaizhang.github.io/demo/index2.html
+### preview: https://wencaizhang.github.io/study/index.html
