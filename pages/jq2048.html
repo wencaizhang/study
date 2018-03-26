@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-	body {
-		user-select: none;
-	}
+        body {
+            user-select: none;
+        }
+
         .holder2048 {
             width: 280px;
             height: 380px;
@@ -101,12 +102,27 @@
         .holder2048>.container>.box[value='8192'] {
             background-color: #FF00FF
         }
+        /* == */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            vertical-align: middle;
+        }
+        button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <h1>
         通过四个方向键移动
+        <button class="restart">重新开始</button>
     </h1>
     <div class="container text-center" id="2048">
     </div>
@@ -666,6 +682,9 @@
     <script>
         $(document).ready(function () {
             $("#2048").init2048();
+            $('.restart').on('click', function () {
+                $("#2048").init2048();
+            })
         });
     </script>
 </body>
