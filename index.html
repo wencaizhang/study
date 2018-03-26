@@ -384,7 +384,7 @@
         var clearFilterContainer = document.querySelector('.clear-filter-container');
         var clearFilterContent = document.querySelector('.clear-filter-content');
 
-        renderUI();
+
         function renderUI(filter) {
             var str = '';
             var reg = new RegExp(filter);
@@ -413,15 +413,19 @@
             input.value = '';
             input.focus();
             renderUI();
+            hashHandler();
         })
 
         searchBtn.addEventListener('click', function () {
-            renderUI(input.value);
+            var val = input.value;
+            renderUI(val);
+            hashHandler(val);
         })
         input.addEventListener('keyup', function (e) {
             if (e.keyCode !== 13) return;
             var val = input.value;
             renderUI(val);
+            hashHandler(val)
         })
 
         filter.addEventListener('click', function (e) {
@@ -430,7 +434,7 @@
         })
 
         body.addEventListener('click', function (e) {
-            filters.classList.add('hidden')
+            filters.classList.add('hidden');
         })
 
         filterItem.forEach(function (item) {
@@ -438,8 +442,28 @@
                 var val = e.target.innerText;
                 input.value = val;
                 renderUI(val);
+                hashHandler(val);
             })
         })
+
+        function hashHandler(val) {
+            var query = val ? '?query=' + val : '';
+            history.pushState({}, '', location.href.split('?')[0] + query);
+        }
+        function fnHashTrigger(val) {
+            var query = location.href.split('?')[1];
+            if (typeof query == 'undefined') {
+                renderUI();
+            } else {
+                renderUI(query.split('=')[1]);
+                input.value = query.split('=')[1];
+            }
+        }
+        window.addEventListener('popstate', function () {
+            fnHashTrigger();
+        })
+        fnHashTrigger();
+
     </script>
 </body>
 

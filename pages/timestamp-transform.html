@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间戳转换工具</title>
+    <style>
+        * {
+            box-sizing: border-box;
+			color: #aaa;
+        }
+
+        input[type="text"] {
+            width: 260px;
+            height: 35px;
+            padding: 5px;
+			color: #000;
+            line-height: 35px;
+            border: 1px solid #d1d5da;
+            border-radius: 3px;
+            outline: none;
+            box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+        }
+
+        input[type="text"]:focus {
+            border-color: #2188ff;
+            outline: none;
+            box-shadow: inset 0 1px 2px rgba(27,31,35,0.075), 0 0 0 0.2em rgba(3,102,214,0.3);
+        }
+
+        input[type="button"] {
+            height: 35px;
+            line-height: 35px;
+            width: 60px;
+            outline: none;
+            background-color: #2188ff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        h1, h2 {
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .time-box {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>时间戳转换工具</h1>
+
+    <div class="base-time">
+        <h2>基本时间：</h2>
+        <div class="time-box">
+            <span>现在的当地时间为：</span>
+            <input class="curr-time" type="text" disabled value="">
+        </div>
+        <div class="time-box">
+            <span>现在的Unix时间戳为：</span>
+            <input class="curr-timestamp" type="text" disabled value="">
+        </div>
+    </div>
+    <div class="time2timestamp-container">
+        <h2>【当地时间】 → 【Unix时间戳】</h2>
+        <input class="time" type="text" placeholder="时间(eg:2015-04-01 10:01:01)">
+        <input class="trans-btn" type="button" value="转换">
+        <input class="timestamp" type="text">
+    </div>
+    <div class="timestamp2time-container">
+        <h2>【Unix时间戳】 → 【当地时间】</h2>
+        <input class="timestamp" type="text" placeholder="时间戳(eg:1388307215)">
+        <input class="trans-btn" type="button" value="转换">
+        <input class="time" type="text">
+    </div>
+
+
+    <script>
+        setCurrTime();
+        setInterval(setCurrTime, 1000)
+        
+        function setCurrTime () {
+            var timestamp = Date.parse(new Date()) / 1000;
+            var time = timestampToTime(timestamp);
+    
+            document.querySelector('.curr-timestamp').value = timestamp;
+            document.querySelector('.curr-time').value = time;
+        }
+
+        document.querySelector('.timestamp2time-container .trans-btn').addEventListener('click', function () {
+            var timestamp = document.querySelector('.timestamp2time-container .timestamp').value;
+            if (!/^\d+$/.test(timestamp)) {
+                alert('请输入正确的 unix 时间戳');
+                return;
+            }
+            document.querySelector('.timestamp2time-container .time').value = timestampToTime(timestamp);
+        })
+
+        document.querySelector('.time2timestamp-container .trans-btn').addEventListener('click', function () {
+            var time = document.querySelector('.time2timestamp-container .time').value;
+            if (!/^\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2}$/.test(time)) {
+                alert('请输入合法的时间格式，如：2014-04-01 10:01:01，或：2014-01-01');
+                return;
+            }
+            document.querySelector('.time2timestamp-container .timestamp').value = Date.parse(new Date(time)) / 1000;
+        })
+
+        /*
+        * 将时间戳转化为 “几周前” 的形式
+        */
+        function getDateDiff(dateTimeStamp) {
+            var minute = 60;
+            var hour = minute * 60;
+            var day = hour * 24;
+            var halfamonth = day * 15;
+            var month = day * 30;
+            var year = day * 365;
+
+            var now = Date.parse(new Date()) / 1000;
+            var diffValue = now - dateTimeStamp;
+
+            var yearC = parseInt(diffValue / year);
+            var monthC = parseInt(diffValue / month);
+            var weekC = parseInt(diffValue / (7 * day));
+            var dayC = parseInt(diffValue / day);
+            var hourC = parseInt(diffValue / hour);
+            var minC = parseInt(diffValue / minute);
+
+            var result = '发表于';
+            var dot = diffValue > 0 ? '前' : '后';
+
+            if (yearC >= 1) {
+                result += yearC + '年' + dot;
+            } else if (monthC >= 6) {
+                result += '半年' + dot;
+            } else if (monthC >= 1) {
+                result += monthC + '个月' + dot;
+            } else if (weekC >= 1) {
+                result += weekC + '周' + dot;
+            } else if (dayC >= 1) {
+                result += dayC + '天' + dot;
+            } else if (hourC >= 1) {
+                result += hourC + '个小时' + dot;
+            } else if (minC >= 1) {
+                result += minC + '分钟' + dot;
+            } else {
+                result = '刚刚发表';
+            }
+            return result;
+        }
+
+        /*
+        * 将时间戳转换为这样的形式 1970-01-1 8:0:0
+        */
+
+        function timestampToTime(timestamp) {
+            var date = new Date(timestamp * 1000); // 时间戳以秒为单位则有 10 位数字，以毫秒为单位则 13 位数字
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+            var D = date.getDate() + ' ';
+            var h = date.getHours() + ':';
+            var m = date.getMinutes() + ':';
+            var s = date.getSeconds();
+            return Y + M + D + h + m + s;
+        }
+    </script>
+</body>
+
+</html>
