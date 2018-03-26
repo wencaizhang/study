@@ -95,14 +95,7 @@
 
         input[type="text"] {
             text-indent: 10px;
-        }
-
-        input[type="button"] {
-            padding: 0 10px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            outline: none;
-            cursor: pointer;
+            border-radius: 3px;
         }
 
         .filters span {
@@ -133,6 +126,8 @@
             left: 0;
             background-color: #fff;
             cursor: pointer;
+            box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+            border-radius: 3px;
         }
 
         .filters span:hover {
@@ -170,6 +165,7 @@
             color: #444d56;
             padding: 0 10px;
             cursor: pointer;
+            border-radius: 3px;
         }
 
         .filter {
@@ -190,11 +186,11 @@
         }
 
 
-        .clear-filter-container:hover {
+        .clear-filter-content:hover {
             color: #0366d6;
         }
 
-        .clear-filter-container:hover .icon {
+        .clear-filter-content:hover .icon {
             border-color: #0366d6;
         }
 
@@ -204,6 +200,10 @@
             margin-top: 15px;
             font-size: 14px;
             user-select: none;
+        }
+
+        .clear-filter-content {
+            display: inline-block;
             cursor: pointer;
         }
 
@@ -239,8 +239,10 @@
                 </a>
             </div>
             <div class="clear-filter-container">
-                <span class="icon">×</span>
-                <span class="text">清除当前的查询条件</span>
+                <div class="clear-filter-content">
+                    <span class="icon">×</span>
+                    <span class="text">清除当前的查询条件</span>
+                </div>
             </div>
         </div>
         <hr>
@@ -375,6 +377,7 @@
         var filters = document.querySelector('.filters');
         var filterItem = document.querySelectorAll('.filters span');
         var clearFilterContainer = document.querySelector('.clear-filter-container');
+        var clearFilterContent = document.querySelector('.clear-filter-content');
 
         renderUI();
         function renderUI(filter) {
@@ -401,7 +404,7 @@
         }
 
 
-        clearFilterContainer.addEventListener('click', function () {
+        clearFilterContent.addEventListener('click', function () {
             input.value = '';
             input.focus();
             renderUI();
