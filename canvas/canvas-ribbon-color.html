@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas 绘制彩色丝带</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <style>
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault()
+        })
+
+        var canvas = document.querySelector('canvas'),
+            ctx = canvas.getContext('2d'),
+            pr = window.devicePixelRatio || 1,
+            width = window.innerWidth,
+            height = window.innerHeight,
+            f = 90,
+            points,
+            r = 0,
+            PI2 = Math.PI * 2,
+            cos = Math.cos,  // 返回一个数字的余弦值
+            random = Math.random  // 返回介于 0 ~ 1 之间的一个随机数
+
+        canvas.width = width * pr
+        canvas.height = height * pr
+        ctx.scale(pr, pr);  // scale() 方法缩放当前绘图，更大或更小。
+        ctx.globalAlpha = 0.6  // globalAlpha 属性设置或返回绘图的当前透明值
+
+        function init() {
+            ctx.clearRect(0, 0, width, height)  // 在给定矩形内清空一个矩形：
+
+            // 初始的两个点
+            points = [{ x: 0, y: height * .7 + f }, { x: 0, y: height * .7 - f }]
+
+            while (points[1].x < width + f) draw(points[0], points[1])
+        }
+
+        function draw(i, j) {
+            ctx.beginPath()
+            ctx.moveTo(i.x, i.y)
+            ctx.lineTo(j.x, j.y)
+
+            // 生成第三个点
+            // random() * 2 - 0.25 取值区间 [-0.25, 1.75]，三角形水平方向大概率是向右边
+            var k = j.x + (random() * 2 - 0.25) * f,
+                n = y(j.y)
+            ctx.lineTo(k, n)
+            ctx.closePath()
+            r -= PI2 / -50
+            ctx.fillStyle = '#' + (cos(r) * 127 + 128 << 16 | cos(r + PI2 / 3) * 127 + 128 << 8 | cos(r + PI2 / 3 * 2) * 127 + 128).toString(16)
+            ctx.fill()
+
+            // 将此三角形的两个点，作为下个三角形的两个点使用，使得相邻两个三角形有一条共用的边
+            points[0] = points[1]
+            points[1] = { x: k, y: n }
+        }
+
+        function y(p) {
+            // random() * 2 - 1.1 取值区间 [-1.1, 0.9]，三角形垂直方向大概率是向上的
+            var t = p + (random() * 2 - 1.1) * f
+            return (t > height || t < 0) ? y(p) : t
+        }
+
+        // 点击或定时切换，二选一
+        // document.onclick = init
+        // document.ontouchstart = init
+        setInterval(init, 3000)
+        init()
+    </script>
+</body>
+
+</html>
