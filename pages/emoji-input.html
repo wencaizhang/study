@@ -5,31 +5,35 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>移动端输入法自带 emoji</title>
     <style>
+        body {
+            text-align: center;
+        }
         input {
             height: 40px;
             width: 80%;
             margin-bottom: 10px;
+            text-indent: 10px;
         }
     </style>
 </head>
 
 <body>
-    &#128525;
+    <p>请输入手机输入法自带 emoji 表情，如：&#128525;</p>
     <input class="content" type="text">
     <input class="submit" type="submit" value="确定">
-    <p class="v1"></p>
-    <p class="v2"></p>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <div class="content-emoji"></div>
+    <div class="content-code"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(".submit").on('click', function () {
             var val = $('.content').val()
             var v1 = utf16toEntities(val);
             var v2 = entitiestoUtf16(v1);
-            $('.v1').text(v1);
-            $('.v2').html(v2)
-
+            $('.content-emoji').html('<p>您输入的表情：' + v2 + '</p>');
+            $('.content-code').text('对应的实体字符：' + v1);
         })
 
         function utf16toEntities(str) {
