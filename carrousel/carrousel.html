@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转木马轮播图</title>
+    <style>
+        @charset "UTF-8";
+        /*初始化  reset*/
+
+        blockquote,
+        body,
+        button,
+        dd,
+        dl,
+        dt,
+        fieldset,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        input,
+        legend,
+        li,
+        ol,
+        p,
+        pre,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 12px/1.5 "Microsoft YaHei", "微软雅黑", SimSun, "宋体", sans-serif;
+            color: #666;
+        }
+
+        ol,
+        ul {
+            list-style: none
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        fieldset,
+        img {
+            border: 0;
+            vertical-align: top;
+        }
+
+        a,
+        input,
+        button,
+        select,
+        textarea {
+            outline: none;
+        }
+
+        a,
+        button {
+            cursor: pointer;
+        }
+
+        .wrap {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .slide {
+            height: 500px;
+            position: relative;
+        }
+
+        .slide li {
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+
+        .slide li img {
+            width: 100%;
+        }
+
+        .arrow {
+            opacity: 0;
+        }
+
+        .prev,
+        .next {
+            width: 76px;
+            height: 112px;
+            position: absolute;
+            top: 50%;
+            margin-top: -56px;
+            background: url(../images/prev.png) no-repeat;
+            z-index: 99;
+        }
+
+        .next {
+            right: 0;
+            background-image: url(../images/next.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="wrap">
+        <div class="slide" id="slide">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="images/slidepic1.jpg" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/slidepic2.jpg" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/slidepic3.jpg" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/slidepic4.jpg" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/slidepic5.jpg" alt="" />
+                    </a>
+                </li>
+            </ul>
+            <div class="arrow" id="arrow">
+                <a href="javascript:;" class="prev" id="arrLeft"></a>
+                <a href="javascript:;" class="next" id="arrRight"></a>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/animate.js"></script>
+        <script>
+            window.onload = function () {
+                //alert("haha");
+                //找人
+                var wrap = document.getElementById("wrap");
+                var slide = document.getElementById("slide");
+                var ul = slide.children[0];
+                var lis = ul.children;
+                var arrow = document.getElementById("arrow");
+                var arrRight = document.getElementById("arrRight");
+                var arrLeft = document.getElementById("arrLeft");
+
+                var config = [
+                    {
+                        width: 400,
+                        top: 20,
+                        left: 50,
+                        opacity: 0.2,
+                        zIndex: 2
+                    },//0
+                    {
+                        width: 600,
+                        top: 70,
+                        left: 0,
+                        opacity: 0.8,
+                        zIndex: 3
+                    },//1
+                    {
+                        width: 800,
+                        top: 100,
+                        left: 200,
+                        opacity: 1,
+                        zIndex: 4
+                    },//2
+                    {
+                        width: 600,
+                        top: 70,
+                        left: 600,
+                        opacity: 0.8,
+                        zIndex: 3
+                    },//3
+                    {
+                        width: 400,
+                        top: 20,
+                        left: 750,
+                        opacity: 0.2,
+                        zIndex: 2
+                    }//4
+                ];//其实就是一个配置单 规定了每张图片的大小位置层级透明度
+
+
+                //鼠标经过wrap 让arrow渐渐地显示
+                wrap.onmouseover = function () {
+                    animate(arrow, { "opacity": 1 });
+                }
+                // 鼠标离开wrap让arrow隐藏
+                wrap.onmouseout = function () {
+                    animate(arrow, { "opacity": 0 });
+                }
+
+                //循环遍历 给每一个li添加配置 让他们各就各位
+                function assign() {
+                    for (var i = 0; i < lis.length; i++) {
+                        animate(lis[i], config[i], function () {
+                            flag = true;
+                        });
+                    }
+                }
+
+                var flag = true;//true表示可以执行动画
+
+                assign();
+                //点击箭头让轮播图转动
+                arrRight.onclick = function () {
+                    if (flag) {
+                        flag = false;
+                        config.push(config.shift());
+                        assign();
+                    }
+                }
+                arrLeft.onclick = function () {
+                    if (flag) {
+                        flag = false;
+                        config.unshift(config.pop());
+                        assign();
+                    }
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
