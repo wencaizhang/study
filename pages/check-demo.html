@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>demo-Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#left {
+			background-color: lightsalmon;
+		}
+		#right {
+			background-color: lightseagreen;
+		}
+		.box {
+			width: 400px;
+			height: 400px;
+			display: inline-block;
+			float: left;
+		}
+		.item {
+			height: 30px;
+			line-height: 30px;
+			padding-left: 15px;
+		}
+		.item input {
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="left" class="box"></div>
+	<div id="right" class="box"></div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+
+		var $leftBox = $('#left');
+		var $rightBox = $('#right');
+
+
+		var data = [
+			{id: 111, name: '苹果'},
+			{id: 222, name: '香蕉'},
+			{id: 333, name: '西瓜'},
+			{id: 444, name: '葡萄'}
+		];
+
+		var html = '';
+		for (var i = 0; i < data.length; i++) {
+			html += getItemHtml(data[i])
+		}
+		function getItemHtml (item) {
+			return '<div class="item">'
+						+ '<input id=' + item.id +' type="checkbox" name="checkbox" data-id=' + item.id + ' value=' + item.id + '>' 
+						+ '<label for='+ item.id +'>' + item.name +'</label>'
+					+ '</div>'
+		}
+
+		$leftBox.html(html);
+
+
+		var $leftCheckbox = $leftBox.find('input');
+
+		$leftCheckbox.on('click', function (e) {
+			if ($('#' + $(e.target).attr('id') + '_clone').length === 0) appendToRight(e.target)
+		})
+
+		$('body').on('click', 'input', function () {
+			var $self = $(this);
+			setSameStatus($self)
+			if (!$self.prop('checked')) removeRightCheckbox ($self)
+		})
+
+		function appendToRight (target) {
+			var id = $(target).attr('id');
+			var name = $(target).parents('.item').find('label').text();
+			var html = getItemHtml({id: id + '_clone', name: name});
+			$rightBox.append(html);
+		}
+
+		function setSameStatus ($self) {
+			var id = $self.attr('data-id');
+			var status = $self.prop('checked');
+			
+			var $sameDom1 = /_clone/.test(id) ? $("#" + id.replace('_clone', '')) : $("#" + id)
+			var $sameDom2 = /_clone/.test(id) ? $("#" + id) : $("#" + id + '_clone')
+			$sameDom1.prop('checked', status);
+			$sameDom2.prop('checked', status);
+		}
+
+		function removeRightCheckbox ($self) {
+			var id = $self.attr('data-id');
+			var $sameDom2 = /_clone/.test(id) ? $("#" + id) : $("#" + id + '_clone')
+			$sameDom2.parents('.item').remove();
+		}
+
+	</script>
+</body>
+</html>
