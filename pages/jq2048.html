@@ -335,22 +335,21 @@
                  */
                 function bind() {
                     $(window).keydown(function (event) {
-                        if (!isGameOver) {
-                            if (event.which == 37) {
-                                event.preventDefault();
-                                gameRun(dir.left);
-                            } else if (event.which == 38) {
-                                event.preventDefault();
-                                gameRun(dir.up);
-                            } else if (event.which == 39) {
-                                event.preventDefault();
-                                gameRun(dir.right);
-                            } else if (event.which == 40) {
-                                event.preventDefault();
-                                gameRun(dir.down);
-                            }
-                        }
+                        var keyCodeArray = [
+                            { key: dir.left,  code: 37 },
+                            { key: dir.up,    code: 38 },
+                            { key: dir.right, code: 39 },
+                            { key: dir.down,  code: 40 }
+                        ]
+
+                        var index = keyCodeArray.findIndex(function (item, index) {
+                            return event.which === item.code
+                        })
+                        if (index === -1) { return; }
+                        event.preventDefault();
+                        gameRun(keyCodeArray[index]['key']);
                     });
+
                     var touchStartClientX, touchStartClientY;
                     document.addEventListener("touchstart", function (event) {
                         if (event.touches.length > 1)
