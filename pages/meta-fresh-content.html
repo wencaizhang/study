@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 重点，敲黑板！ -->
+    <meta http-equiv="refresh" content="5">
+    <title>meta与页面刷新</title>
+    <!-- http://www.zhangxinxu.com/wordpress/2015/03/meta-http-equiv-refresh-content/ -->
+</head>
+
+<body>
+    <p style="text-align: center;">本页面每 5 秒刷新一下，这是您第 <mark></mark> 次进入本页面！</p>
+    <script>
+        if (window.localStorage) {
+            var metaRefresh = localStorage.metaRefresh || 0;
+            document.querySelector("mark").innerHTML = ++metaRefresh;
+            localStorage.metaRefresh = metaRefresh;
+        }
+    </script>
+</body>
+
+</html>
