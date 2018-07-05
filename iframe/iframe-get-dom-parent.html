@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe 高度自适应 demo</title>
+    <style>
+        .text {
+            font-weight: bold;
+        }
+
+        pre {
+            font: 14px/1.3 Consolas, Monaco, monospace;
+            padding: 5px 10px;
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #ccc;
+        }
+
+        .code {
+            width: 50%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .container,
+        iframe {
+            width: 40%;
+            height: 400px;
+            display: inline-block;
+            border: 1px solid #ccc;
+        }
+
+        .container {
+            text-align: center;
+            vertical-align: top;
+        }
+
+        button {
+            height: 36px;
+            padding: 7px 20px;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #02bd85;
+            border: 1px solid #02a473;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #018b61;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>iframe 和父页面之间相同通信</h1>
+        <p>在父页面中改变 iframe 中的 h1 标题</p>
+        <p style="text-align: left; text-indent: 150px;">jquery：</p>
+        <p>
+            <button id="jq-change-btn">颜色变为 蓝色</button>
+            <button id="jq-reset-btn">重置</button>
+        </p>
+        <p style="text-align: left; text-indent: 150px;">js：</p>
+        <p>
+            <button id="js-change-btn">颜色变为 红色</button>
+            <button id="js-reset-btn">重置</button>
+        </p>
+        <p style="text-align: left; text-indent: 150px;">调用 iframe 的一个全局方法：</p>
+        <p>
+            <button id="run">run</button>
+        </p>
+    </div>
+
+
+    <iframe id="iframeId" src="./iframe-get-dom-child.html"></iframe>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+
+            // jquery 版
+            $('#jq-change-btn').on('click', function () {
+                // $h1 如果定义在外面，会出找不到 h1 ...
+                var $h1 = $("#iframeId").contents().find('h1');
+                $h1.css({ color: 'blue' });
+            });
+            $('#jq-reset-btn').on('click', function () {
+                var $h1 = $("#iframeId").contents().find('h1');
+                $h1.css({ color: '' });
+            });
+
+            // js 版
+            var _iframe = document.querySelector('#iframeId').contentWindow;
+            var changeBtn = document.querySelector('#js-change-btn');
+            var resetBtn = document.querySelector('#js-reset-btn');
+            changeBtn.addEventListener('click', function () {
+                var _h1 = _iframe.document.querySelector('h1');
+                _h1.style.color = 'red';
+            });
+            resetBtn.addEventListener('click', function () {
+                var _h1 = _iframe.document.querySelector('h1');
+                _h1.style.color = '';
+            });
+
+
+            $('#run').on('click', function () {
+                $("#iframeId").contents().iframeFn();
+            })
+
+            function parentFn() {
+                var text = '我是父页面的方法，这是来自 iframe 的调用';
+                console.log(text);
+            }
+        }
+    </script>
+</body>
+
+</html>
