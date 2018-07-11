@@ -3,14 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iframe 高度自适应 demo</title>
     <style>
+        body {
+            text-align: center;
+        }
         .text {
             font-weight: bold;
         }
-
+        h1 {
+            text-align: center;
+        }
         pre {
             font: 14px/1.3 Consolas, Monaco, monospace;
             padding: 5px 10px;
@@ -29,7 +33,7 @@
         .container,
         iframe {
             width: 40%;
-            height: 400px;
+            height: 500px;
             display: inline-block;
             border: 1px solid #ccc;
         }
@@ -107,13 +111,23 @@
 
 
             $('#run').on('click', function () {
-                $("#iframeId").contents().iframeFn();
+                document.getElementById("iframeId").contentWindow.iframeFn()
+                // $("#iframeId").contents().iframeFn();
             })
 
-            function parentFn() {
-                var text = '我是父页面的方法，这是来自 iframe 的调用';
+            window.parentFn = function () {
+                var text = '我来自 父页面，由 iframe 调用';
                 console.log(text);
             }
+
+            /*
+            * 注意：使用下面方式声明函数，则无法被 iframe 调用
+            * 同样的，在 iframe 中期望一个函数被父页面调用，则也不能使用 function 声明
+            */
+            // function parentFn () {
+            //     var text = '我来自 父页面，由 iframe 调用';
+            //     console.log(text);
+            // }
         }
     </script>
 </body>

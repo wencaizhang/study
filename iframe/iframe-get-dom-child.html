@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iframe 和父页面之间相同通信</title>
     <style>
@@ -74,12 +73,12 @@
     
         window.onload = function () {
             // 调用 父页面的一个方法
-            // window.parent.parentFn();
             $('#run').on('click', function () {
-                window.parent.document.parentFn();
+                parent.parentFn();
             })
-            function iframeFn () {
-                var text = '我是 iframe 的方法，这是来自 父页面 的调用';
+            window.name = 'iframe';
+            window.iframeFn = function () {
+                var text = '我来自 iframe ，由 父页面 调用';
                 console.log(text);
             }
 
@@ -106,7 +105,6 @@
                 _h1.style.color = '';
             });
         }
-        window.parent.parentFn();
     </script>
 </body>
 

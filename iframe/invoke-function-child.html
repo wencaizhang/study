@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe 和父页面之间相同通信</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            font-family: 'microsoft Yahei';
+        } */
+
+        p {
+            margin: 10px 0;
+        }
+
+        body {
+            background-color: lightblue;
+        }
+
+        button {
+            height: 36px;
+            padding: 7px 20px;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #02bd85;
+            border: 1px solid #02a473;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #018b61;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p style="text-align: left;">调用 <strong>父页面</strong> 的一个全局方法：</p>
+        <p>
+            <button id="run">run</button>
+        </p>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        window.onload = function () {
+
+            window.iframeFn = function (str) {
+                console.log(str)
+                var text = '我来自 iframe ，由 父页面 ' + str.toString() + '调用';
+                alert(text)
+                console.log(text);
+            }
+
+            // 调用 父页面的一个方法
+            $('#run').on('click', function () {
+                // 直接使用 parent 取得父页面的 window 对象
+                parent.parentFn();
+            })
+
+
+        }
+    </script>
+</body>
+
+</html>
