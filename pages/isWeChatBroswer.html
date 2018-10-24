@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>判断是否微信内置浏览器</title>
+</head>
+<body>
+  <p id="text">User Agent：</p>
+  <p id="ua"></p>
+  <hr>
+  <p>
+    <span>判断是否微信内置浏览器？</span><span id="answer"></span>
+  </p>
+  <script>
+    var $ua = document.querySelector('#ua')
+    $ua.innerText = navigator.userAgent;
+
+    var $answer = document.querySelector('#answer')
+    $answer.innerText = isWeChatBroswer();
+
+    function isWeChatBroswer(){
+      var ua = navigator.userAgent.toLowerCase();
+      return /micromessenger/.test(ua)
+    }
+  </script>
+</body>
+</html>
