@@ -247,7 +247,7 @@
         <ul class="card-list">
         </ul>
     </div>
-
+    <script src="./db.js"></script>
     <script>
         var data = [
             {
@@ -417,15 +417,16 @@
         function renderUI(filter) {
             var str = '';
             var reg = new RegExp(filter);
+            data = db;
             data.forEach(function (item, index) {
                 var isRelated = filter ? false : true;
                 var strTag = '';
-                item.tags.forEach(function (tag) {
-                    if (reg.test(tag)) {
-                        isRelated = true;
-                    }
-                    strTag += '<span class="tag">#' + tag + '</span>'
-                })
+                // item.tags.forEach(function (tag) {
+                //     if (reg.test(tag)) {
+                //         isRelated = true;
+                //     }
+                //     strTag += '<span class="tag">#' + tag + '</span>'
+                // })
                 if (reg.test(item.name)) {
                     isRelated = true;
                 }
