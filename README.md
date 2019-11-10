@@ -47,14 +47,14 @@
       <td>
         <ul>
           <li><a href="https://wencaizhang.github.io/study/animation/CSS3-正方体动画.html" target="blank">CSS3-正方体动画</a></li>
-          <li><a href="https://wencaizhang.github.io/study/animation/css3-tooltip.html" target="blank">纯CSS3 Tooltip提示</li></a>
+          <li><a href="https://wencaizhang.github.io/study/animation/css3-tooltip.html" target="blank">纯CSS3 Tooltip提示</a></li>
           <li><a href="https://wencaizhang.github.io/study/animation/flip-book.html" target="blank">翻页特效</a></li>
         </ul>
       </td>
       <td>
         <ul>
           <li><a href="https://github.com/wencaizhang/study/animation/CSS3-正方体动画.html" target="blank">CSS3-正方体动画</a></li>
-          <li><a href="https://github.com/wencaizhang/study/animation/css3-tooltip.html" target="blank">纯CSS3 Tooltip提示</li></a>
+          <li><a href="https://github.com/wencaizhang/study/animation/css3-tooltip.html" target="blank">纯CSS3 Tooltip提示</a></li>
           <li><a href="https://github.com/wencaizhang/study/animation/flip-book.html" target="blank">翻页特效</a></li>
         </ul>
       </td>
