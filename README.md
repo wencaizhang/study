@@ -12,9 +12,43 @@ node ./app.js
 
 ## 目录
 
-| 效果 | 预览 | 源码 |
-| :--- | :--- | :--- |
-| 登录 | [login.html](https://wencaizhang.github.io/study/login/login1.html) | [login.html](https://github.com/wencaizhang/study/login/login1.html)|
-| loading1 | [loading1.html](https://wencaizhang.github.io/study/loading/loading1.html) | [loading1.html](https://github.com/wencaizhang/study/loading/loading1.html)|
-| loading2 | [loading2.html](https://wencaizhang.github.io/study/loading/loading2.html) | [loading2.html](https://github.com/wencaizhang/study/loading/loading2.html)|
-
+<style>
+  tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+    text-align: center;
+}
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>效果名</th>
+      <th>预览</th>
+      <th>源码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>登录</td>
+      <td>
+        <a href="https://wencaizhang.github.io/study/login/login1.html" target="blank">login.html</a>
+      </td>
+      <td>
+        <a href="https://github.com/wencaizhang/study/login/login1.html" target="blank">login.html</a>
+      </td>
+    </tr>
+    <tr>
+      <td>loading</td>
+      <td>
+        <a href="https://wencaizhang.github.io/study/loading/loading1.html" target="blank">loading1.html</a>
+        <br />
+        <a href="https://wencaizhang.github.io/study/loading/loading2.html" target="blank">loading2.html</a>
+      </td>
+      <td>
+        <a href="https://github.com/wencaizhang/study/loading/loading1.html" target="blank">loading1.html</a>
+        <br />
+        <a href="https://github.com/wencaizhang/study/loading/loading2.html" target="blank">loading2.html</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
