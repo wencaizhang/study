@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta http-equiv="description" content="在线转二维码" />
+  <meta name="description" content="可以把任意的字符内容转换成二维码格式" />
+  <meta name="keywords" content="工具, 二维码, canvas" />
+  <meta name="author" content="张文才, wencaizhang" />
+  <title>在线转二维码</title>
+  <link href="https://cdn.bootcss.com/Primer/11.0.0-rc.5/build.css" rel="stylesheet">
+  <style>
+    html {
+      font-size: 100px;
+    }
+    .container {
+      width: 8rem;
+    }
+    .h100 {
+      height: 100px;
+    }
+    .tac {
+      text-align: center;
+    }
+    .fr {
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="Header">
+    <div class="Header-item">
+      <h1 class="tac my-4">在线转二维码小工具</h1>
+    </div>
+  </div>
+
+
+  <div class="box container">
+    <form id="form" class="input-x mb-4">
+      <div class="follow">
+        <textarea id="input" class="form-control input-block h100 mb-4"></textarea>
+      </div>
+      <div>
+        <label for="number">大小：</label>
+        <select id="number" class="form-select mr-2" aria-label="Preference">
+          <option>200</option>
+          <option>300</option>
+          <option>400</option>
+          <option>500</option>
+          <option>600</option>
+          <option>700</option>
+          <option>800</option>
+        </select>
+        <label for="color">颜色：</label>
+        <input id="color" class="color form-control mr-4">
+        <button type="submit" class="btn btn-primary fr">生成二维码</button>
+        <button type="reset" class="btn fr mr-2">清空</button>
+      </div>
+    </form>
+
+    <div id="output" class="output tac">
+
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+  <script src="https://cdn.bootcss.com/tinyColorPicker/1.1.1/jqColorPicker.min.js"></script>
+
+  <script>
+    $('.color').colorPicker(); // that's it
+    var elOutput = $('#output');
+    var elInput = $('#input');
+    var elNumber = $('#number');
+    var elColor = $('#color');
+
+    if (localStorage.qrcodeSize) {
+      elNumber.val(localStorage.qrcodeSize);
+    } else if (screen.width <= 800) {
+      elNumber.val(300);
+    }
+
+    elNumber.css('visibility', 'visible');
+
+    var fnGenter = function () {
+      if (elInput.val() == '') {
+        elOutput.html('<p class="IssueLabel IssueLabel--big bg-red text-white p-1">请输入需要转换的内容！</p>');
+        elInput[0].focus();
+        return;
+      }
+
+      var size = elNumber.val() || 300;
+      var color = elColor.val() || '#000';
+      elOutput.empty().qrcode({
+        width: size,
+        height: size,
+        background: "#fff", //背景颜色  
+        foreground: color , //前景颜色  
+        text: utf16to8(elInput.val())
+      });
+
+      localStorage.qrcodeSize = size;
+
+      // elInput.val('');
+    };
+
+    $('#form').submit(function (event) {
+      event.preventDefault();
+
+      fnGenter();
+    });
+
+    elNumber.change(fnGenter);
+
+    function utf16to8(str) {  
+      var out, i, len, c;  
+      out = "";  
+      len = str.length;  
+      for(i = 0; i < len; i++) {  
+      c = str.charCodeAt(i);  
+      if ((c >= 0x0001) && (c <= 0x007F)) {  
+          out += str.charAt(i);  
+      } else if (c > 0x07FF) {  
+          out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+          out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+          out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+      } else {  
+          out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+          out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+      }  
+      }  
+      return out;  
+    }
+  </script>
+
+</body>
+
+</html>

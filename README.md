@@ -28,6 +28,19 @@
       </td>
     </tr>
     <tr>
+      <td>二维码转换工具</td>
+      <td>
+        <ul>
+          <li><a href="https://wencaizhang.github.io/study/tools/qrcode.html" target="blank">qrcode</a></li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href="https://github.com/wencaizhang/study/tools/qrcode.html" target="blank">qrcode</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>登录</td>
       <td>
         <ul>
