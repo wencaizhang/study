@@ -15,6 +15,19 @@
   </thead>
   <tbody>
     <tr>
+      <td>主页</td>
+      <td>
+        <ul>
+          <li><a href="https://wencaizhang.github.io/study/home/home1.html" target="blank">home1</a></li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href="https://github.com/wencaizhang/study/home/home1.html" target="blank">home1</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>登录</td>
       <td>
         <ul>
@@ -23,7 +36,7 @@
       </td>
       <td>
         <ul>
-          <li><a href="https://github.com/wencaizhang/study/login/login1.html" target="blank">login2</a></li>
+          <li><a href="https://github.com/wencaizhang/study/login/login2.html" target="blank">login2</a></li>
         </ul>
       </td>
     </tr>
