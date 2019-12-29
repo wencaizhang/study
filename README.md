@@ -24,8 +24,8 @@
       </td>
       <td>
         <ul>
-          <li><a href="https://github.com/wencaizhang/study/gua-gua-ka/card1.html" target="blank">刮刮卡1</a></li>
-          <li><a href="https://github.com/wencaizhang/study/gua-gua-ka/card2.html" target="blank">刮刮卡2</a></li>
+          <li><a href="https://github.com/wencaizhang/study/blob/master/gua-gua-ka/card1.html" target="blank">刮刮卡1</a></li>
+          <li><a href="https://github.com/wencaizhang/study/blob/master/gua-gua-ka/card2.html" target="blank">刮刮卡2</a></li>
         </ul>
       </td>
     </tr>
