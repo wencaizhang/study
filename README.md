@@ -18,6 +18,21 @@
       <td>主页</td>
       <td>
         <ul>
+          <li><a href="https://wencaizhang.github.io/study/gua-gua-ka/card1.html" target="blank">刮刮卡1</a></li>
+          <li><a href="https://wencaizhang.github.io/study/gua-gua-ka/card2.html" target="blank">刮刮卡2</a></li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href="https://github.com/wencaizhang/study/gua-gua-ka/card1.html" target="blank">刮刮卡1</a></li>
+          <li><a href="https://github.com/wencaizhang/study/gua-gua-ka/card2.html" target="blank">刮刮卡2</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>主页</td>
+      <td>
+        <ul>
           <li><a href="https://wencaizhang.github.io/study/backtop/index.html" target="blank">回到顶部</a></li>
         </ul>
       </td>
