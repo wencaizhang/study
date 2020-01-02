@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<style>
+  li {
+    width: 200px;
+    height: 200px;
+  }
+
+  .ul {
+    width: 606px;
+    height: 606px;
+  }
+
+  .ul li {
+    float: left;
+    border: 1px solid #000000;
+    list-style: none;
+    line-height: 200px;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .ul li.active {
+    background-color: #f5f5d5;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+  <div class="ul">
+    <li class="li1">1</li>
+    <li class="li2">2</li>
+    <li class="li3">3</li>
+    <li class="li8">8</li>
+    <li class="listart">开始</li>
+    <li class="li4">4</li>
+    <li class="li7">7</li>
+    <li class="li6">6</li>
+    <li class="li5">5</li>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    var last_index = 0, //上一回滚动的位置
+      amplification_index = 0, //轮盘的当前滚动位置,0表示为第一次
+      roll_flag = true, //是否允许滚动
+      max_number = 8, //轮盘的全部数量
+      speed = 300, //速度，速度值越大，则越慢 初始化为300
+      finalindex = 3, //最终的奖励
+      myInterval = "", //定时器
+      max_speed = 40, //滚盘的最大速度
+      minturns = 8, //最小的圈数为2
+      runs_now = 0; //当前已跑步数
+    $(".listart").bind("click", function () {
+      //初始化步数
+      runs_now = 0;
+      //当前可以点击的状态下
+      if (roll_flag) {
+        roll_flag = false;
+        //启动滚盘，注，若是最终后台无返回就不好意思里
+        run();
+      }
+    });
+
+    //滚动轮盘的动画效果
+    function run() {
+      myInterval = setTimeout(function () {
+        run();
+      }, speed);
+      runs_now++; //已经跑步数加一
+      amplification_index++; //当前的加一
+      //获取总步数，接口延迟问题，所以最后还是设置成1s以上
+      var count_num = minturns * max_number + finalindex - last_index;
+      console.log(count_num);
+      //上升期间
+      if (runs_now <= (count_num / 3) * 2) {
+        speed -= 30; //加速
+        if (speed <= max_speed) {
+          speed = max_speed; //最高速度为40；
+        }
+      }
+      //抽奖结束
+      else if (runs_now >= count_num) {
+        clearInterval(myInterval);
+        last_index = amplification_index;
+        roll_flag = true;
+
+      }
+      //下降期间
+      else if (count_num - runs_now <= 10) {
+        speed += 20;
+      }
+      //缓冲区间
+      else {
+        speed += 10;
+        if (speed >= 100) {
+          speed = 100; //最低速度为100；
+        }
+      }
+      if (amplification_index > max_number) { //判定！是否大于最大数
+        amplification_index = 1;
+      }
+      toggleClass(amplification_index)
+
+    }
+
+    function toggleClass(index) {
+      var strli = ".li";
+      var className = "active"
+      strli += index;
+      $("li").each(function () {
+        $(this).removeClass(className)
+      })
+      $(strli).addClass(className)
+    }
+  </script>
+</body>
+
+</html>

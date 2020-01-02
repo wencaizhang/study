@@ -13,19 +13,18 @@
       <th>源码</th>
     </tr>
   </thead>
-  <tbody
+  <tbody>
     <tr>
-      <td>主页</td>
+      <td>抽奖</td>
       <td>
         <ul>
-          <li><a href="https://wencaizhang.github.io/study/gua-gua-ka/card1.html" target="blank">刮刮卡1</a></li>
-          <li><a href="https://wencaizhang.github.io/study/gua-gua-ka/card2.html" target="blank">刮刮卡2</a></li>
+          <li><a href="https://wencaizhang.github.io/study/9宫格抽奖.html" target="blank">九宫格抽奖</a></li>
+          <li>转盘抽奖：todo</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li><a href="https://github.com/wencaizhang/study/blob/master/gua-gua-ka/card1.html" target="blank">刮刮卡1</a></li>
-          <li><a href="https://github.com/wencaizhang/study/blob/master/gua-gua-ka/card2.html" target="blank">刮刮卡2</a></li>
+          <li><a href="https://github.com/wencaizhang/study/blob/master/9宫格抽奖.html" target="blank">九宫格抽奖</a></li>
         </ul>
       </td>
     </tr>
