@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>张文才的个人网站</title>
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1671456_hcboulijfy5.css">
+  <link rel="shortcut icon" href="http://ibb-oss.wencaizhang.com/3828f850662baee990bbdaa479ccad4d.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to right, #2568ef, #ff564f) !important;
+      height: 100vh;
+      width: 100vw;
+      font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+      overflow: hidden;
+      font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 300;
+    }
+
+
+    .top {
+      top: 0;
+      bottom: auto;
+    }
+
+    .bottom {
+      bottom: 0;
+      top: auto;
+    }
+
+    .right {
+      right: 0;
+      left: auto;
+    }
+
+    .left {
+      left: 0;
+      right: auto;
+    }
+
+    .opacity-10 {
+      opacity: 0.1;
+    }
+
+    .h-25 {
+      height: 25% !important;
+    }
+
+    .w-25 {
+      width: 25% !important;
+    }
+
+    .h-50 {
+      height: 50% !important;
+    }
+
+    .w-50 {
+      width: 50% !important;
+    }
+
+    .bg-white {
+      background-color: #fff !important;
+    }
+
+    .blob.right {
+      right: -5vw;
+    }
+
+    .blob.top {
+      top: -5vw;
+    }
+
+    .blob {
+      position: absolute;
+      z-index: 0;
+      transform: scale(3);
+      -webkit-mask-image: url(https://sfo2.digitaloceanspaces.com/softorbits/softorbits.com/assets/img/blobs/blob-1.svg);
+      mask-image: url(https://sfo2.digitaloceanspaces.com/softorbits/softorbits.com/assets/img/blobs/blob-1.svg);
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
+
+    .blob.blob-3 {
+      -webkit-mask-image: url(https://sfo2.digitaloceanspaces.com/softorbits/softorbits.com/assets/img/blobs/blob-3.svg);
+      mask-image: url(https://sfo2.digitaloceanspaces.com/softorbits/softorbits.com/assets/img/blobs/blob-3.svg);
+    }
+
+    .blob.blob-4 {
+      -webkit-mask-image: url(https://sfo2.digitaloceanspaces.com/softorbits/softorbits.com/assets/img/blobs/blob-4.svg);
+      mask-image: url(https://sfo2.digitaloceanspaces.com/softorbits/softorbits.com/assets/img/blobs/blob-4.svg);
+    }
+
+    /*-0---0-*/
+    .home-box {
+      -webkit-user-select: none;
+      position: absolute;
+      z-index: 10;
+      width: 440px;
+      height: 240px;
+      background: rgba(97, 97, 97, 0.3);
+      left: 50%;
+      top: 50%;
+      margin-left: -220px;
+      /* margin-top: -120px; */
+      margin-top: -180px;
+      padding: 20px;
+      border-radius: 12px;
+      color: #eee;
+      /* font-family: Georgia, serif; */
+      transition: all .3s ease;
+    }
+
+    .home-box:hover {
+      background: rgba(97, 97, 97, 0.4);
+    }
+
+    #indexLogo {
+      cursor: pointer;
+      -webkit-user-select: none;
+    }
+
+    .home-box h2,
+    .home-box h3 {
+      color: #eee;
+      /* font-weight: 400; */
+      font-weight: 300;
+      font-size: 24px;
+      text-align: center;
+      line-height: 36px;
+    }
+
+    .home-box h3 {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .home-box p {
+      background: rgba(154, 154, 154, 0.5);
+      padding: 10px;
+      line-height: 24px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+
+    .home-box p a {
+      color: #eee;
+      text-decoration: none;
+    }
+
+    .home-box p a:hover {
+      text-decoration: underline;
+    }
+
+    .home-box h2 img {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      vertical-align: middle;
+      margin-left: 5px;
+      border: 0;
+    }
+
+    .home-box .icon {
+      font-size: 20px;
+      margin: 4px;
+    }
+
+    /* font */
+    @font-face {
+      font-family: 'webfont';
+      font-display: swap;
+      src: url('https://at.alicdn.com/t/webfont_hbu6riqckjf.eot');
+      /* IE9*/
+      src: url('https://at.alicdn.com/t/webfont_hbu6riqckjf.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('https://at.alicdn.com/t/webfont_hbu6riqckjf.woff2') format('woff2'),
+        url('https://at.alicdn.com/t/webfont_hbu6riqckjf.woff') format('woff'),
+        /* chrome、firefox */
+        url('https://at.alicdn.com/t/webfont_hbu6riqckjf.ttf') format('truetype'),
+        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url('https://at.alicdn.com/t/webfont_hbu6riqckjf.svg#AlibabaPuHuiTiL') format('svg');
+      /* iOS 4.1- */
+    }
+
+    .web-font {
+      font-family: "webfont" !important;
+      font-size: 16px;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+
+<body>
+  <!--样式仿照 https://www.softorbits.com/installed.html?v=5.0&a_aid=&ref=Remover&lang=chinesesimplified&pid=bkg&enableInstall=1&activated=1&utm_nooverride=1&utm_source=Remover&utm_medium=installer&utm_term=SoftOrbits%20Background%20Remover&utm_content=action=installerpopup,v=5.0,lang=chinesesimplified&utm_campaign=Build%20SoftOrbits%20Background%20Remover%20-%20(no%20rule)%20-%20Remover -->
+
+  <div class="blob blob-3 w-50 h-50 bg-white opacity-10 top right"></div>
+  <div class="blob blob-4 w-25 h-25 bg-white opacity-10 bottom left"></div>
+
+  <div class="home-box">
+    <h2 title="For Future, For Freedom." id="indexLogo" class="web-font">
+      张文才的个人网站
+      <a aria-hidden="true" href="/entry/"><img
+          src="http://ibb-oss.wencaizhang.com/3828f850662baee990bbdaa479ccad4d.png" alt="张文才" /></a>
+    </h2>
+    <h3 title="For Future, For Freedom." aria-hidden="true">
+      wencaizhang's personal website
+    </h3>
+    <p>
+      <font aria-hidden="true">»</font>
+      <a href="javascript:;" aria-label="点击查看博客文章列表">博客</a>
+      <font aria-hidden="true">/ </font>
+      <a href="javascript:;" aria-label="给文才留言">留言</a>
+      <font aria-hidden="true">/ </font>
+      <a href="javascript:;" aria-label="文才的实验室">实验</a>
+      <font aria-hidden="true">/ </font>
+      <a href="javascript:;" aria-label="查看文才的个人信息">关于</a>
+    </p>
+    <p>
+      <font aria-hidden="true">»</font>
+      <i class="icon" title="Github">
+        <a href="https://github.com/wencaizhang" target="_blank" aria-label="文才的 Github 地址">
+          <i class="iconfont icon-github"></i>
+        </a>
+      </i>
+    </p>
+  </div>
+</body>
+
+</html>

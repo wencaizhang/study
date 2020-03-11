@@ -46,11 +46,13 @@
       <td>
         <ul>
           <li><a href="https://wencaizhang.github.io/study/home/home1.html" target="blank">home1</a></li>
+          <li><a href="https://wencaizhang.github.io/study/home/home2.html" target="blank">home2</a></li>
         </ul>
       </td>
       <td>
         <ul>
           <li><a href="https://github.com/wencaizhang/study/blob/master/home/home1.html" target="blank">home1</a></li>
+          <li><a href="https://github.com/wencaizhang/study/blob/master/home/home2.html" target="blank">home2</a></li>
         </ul>
       </td>
     </tr>
