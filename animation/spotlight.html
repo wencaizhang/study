@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聚光灯</title>
+    <style>
+      body {
+        background-color: #222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 100vw;
+        min-height: 10vh;
+      }
+
+      h1 {
+        color: #333;
+        margin: 0;
+        padding: 0;
+        font-size: 8rem;
+        letter-spacing: -0.3rem;
+        position: relative;
+      }
+
+      h1::after {
+        content: attr(data-sp);
+        color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: ellipse(100px 100px at 0% 50%);
+        animation: sp 5s infinite;
+        /* 背景色无效 */
+        background-image: linear-gradient(90deg,#2568ef,#ff564f)!important;
+        /* background-image: url(https://pic2.zhimg.com/v2-3364af6d1f362ee28b57fe9e699168c2_1200x500.jpg); */
+        /* background-image: linear-gradient(
+          110.7deg,
+          rgba(255, 81, 47, 1) 1.7%,
+          rgba(255, 167, 47, 1) 8.2%,
+          rgba(218, 253, 1, 1) 16.2%,
+          rgba(98, 234, 20, 1) 23.4%,
+          rgba(69, 193, 42, 1) 32.8%,
+          rgba(7, 249, 149, 1) 43.7%,
+          rgba(6, 200, 217, 1) 55.3%,
+          rgba(18, 51, 233, 1) 65.5%,
+          rgba(122, 59, 202, 1) 74.5%,
+          rgba(231, 7, 249, 1) 82.3%,
+          rgba(202, 59, 163, 1) 91.4%
+        ); */
+        /* background-position: center center; */
+        background-size: 150%;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      @keyframes sp {
+        0% {
+          clip-path: ellipse(100px 100px at 0% 50%);
+        }
+
+        50% {
+          clip-path: ellipse(100px 100px at 100% 50%);
+        }
+
+        100% {
+          clip-path: ellipse(100px 100px at 0% 50%);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 data-sp="聚光灯聚光灯">聚光灯聚光灯</h1>
+  </body>
+</html>
