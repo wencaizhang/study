@@ -74,11 +74,13 @@
       <td>
         <ul>
           <li><a href="https://wencaizhang.github.io/study/login/login1.html" target="blank">login1</a></li>
+          <li><a href="https://wencaizhang.github.io/study/login/login2/login.html" target="blank">login2</a></li>
         </ul>
       </td>
       <td>
         <ul>
-          <li><a href="https://github.com/wencaizhang/study/blob/master/login/login2.html" target="blank">login2</a></li>
+          <li><a href="https://github.com/wencaizhang/study/blob/master/login/login1.html" target="blank">login2</a></li>
+          <li><a href="https://github.com/wencaizhang/study/blob/master/login/login2/login.html" target="blank">login2</a></li>
         </ul>
       </td>
     </tr>
