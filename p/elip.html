@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多行文本省略</title>
+</head>
+
+<body>
+
+
+  <p class="p1">
+    有一天，螃蟹撞到了田螺。田螺说:“蟹蟹，你撞到我了”，螃蟹说:“不用谢”。田螺回道:“谢你妹啊，我是说你撞到我了，你是不是瞎啊”，螃蟹一脸委屈地说:“我不是虾啊，我是螃蟹”
+    有一天，螃蟹撞到了田螺。田螺说:“蟹蟹，你撞到我了”，螃蟹说:“不用谢”。田螺回道:“谢你妹啊，我是说你撞到我了，你是不是瞎啊”，螃蟹一脸委屈地说:“我不是虾啊，我是螃蟹”
+    有一天，螃蟹撞到了田螺。田螺说:“蟹蟹，你撞到我了”，螃蟹说:“不用谢”。田螺回道:“谢你妹啊，我是说你撞到我了，你是不是瞎啊”，螃蟹一脸委屈地说:“我不是虾啊，我是螃蟹”
+  </p>
+
+  <style>
+    .p1 {
+      border: 1px solid #ccc;
+      line-height: 1.5em;
+      /* 高度为需要显示的行数*行高，比如这里我们显示两行，则为3 */
+      max-height: 6em;
+      overflow: hidden;
+      position: relative;
+
+      /* 文本右侧留一点空间 */
+      padding-right: 1em;
+
+      /* 文本两侧对齐 */
+      text-align: justify;
+    }
+
+    .p1::before {
+      content: "...";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    .p1::after {
+      content: "";
+      position: absolute;
+      margin-top: 0.5em;
+      right: 0;
+      background-color: #fff;
+      width: 1em;
+      height: 1em;
+    }
+  </style>
+
+  <hr>
+
+
+  <p class="p2">
+    有一天，螃蟹撞到了田螺。田螺说:“蟹蟹，你撞到我了”，螃蟹说:“不用谢”。田螺回道:“谢你妹啊，我是说你撞到我了，你是不是瞎啊”，螃蟹一脸委屈地说:“我不是虾啊，我是螃蟹”
+    有一天，螃蟹撞到了田螺。田螺说:“蟹蟹，你撞到我了”，螃蟹说:“不用谢”。田螺回道:“谢你妹啊，我是说你撞到我了，你是不是瞎啊”，螃蟹一脸委屈地说:“我不是虾啊，我是螃蟹”
+    有一天，螃蟹撞到了田螺。田螺说:“蟹蟹，你撞到我了”，螃蟹说:“不用谢”。田螺回道:“谢你妹啊，我是说你撞到我了，你是不是瞎啊”，螃蟹一脸委屈地说:“我不是虾啊，我是螃蟹”
+  </p>
+  <style>
+    .p2 {
+      border: 1px solid #ccc;
+      line-height: 1.5em;
+      /* 高度为需要显示的行数*行高，比如这里我们显示两行，则为3 */
+      max-height: 6em;
+      overflow: hidden;
+      position: relative;
+
+      /* 文本右侧留一点空间 */
+      padding-right: 1em;
+
+      /* 文本两侧对齐 */
+      text-align: justify;
+    }
+
+
+    .p2::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin-bottom: .2em;
+      height: 1.2em;
+      width: 20%;
+      background: linear-gradient(to right, rgba(225, 225, 225, 0), #fff 80%);
+    }
+  </style>
+</body>
+
+</html>

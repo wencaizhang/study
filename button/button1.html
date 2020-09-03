@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <title>萤火虫动态按钮</title>
+</head>
+<style>
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        background: #040910;
+        background-size: cover;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    button {
+        outline: none;
+        border: none;
+    }
+
+    .firefly {
+        width: 180px;
+        height: 60px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(to right, #6EB46E 10%, #55B455);
+        border-radius: 40px;
+        opacity: .88;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    .firefly:hover {
+        box-shadow: 0 0 10px #B4FFB4;
+    }
+
+    .firefly p {
+        line-height: 60px;
+        font-size: 22px;
+        color: #F5DD8F;
+        /* font-family: firefly; */
+        opacity: .88;
+    }
+
+    .lightning {
+        width: 95%;
+        height: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 40px;
+        transition: .8s;
+        overflow: hidden;
+    }
+
+    .firefly:hover .lightning {
+        box-shadow: 0 0 4px #B4FFB4 inset;
+    }
+
+    .lightning ul {
+        opacity: 0;
+        transition: .8s;
+    }
+
+    .firefly:hover ul {
+        opacity: .8;
+    }
+
+    .lightning ul li {
+        width: 5px;
+        height: 5px;
+        background-color: #91FA91;
+        position: absolute;
+        bottom: 10%;
+        border-radius: 50%;
+        opacity: .6;
+        animation: fireflymove infinite linear;
+    }
+
+    @keyframes fireflymove {
+        100% {
+            bottom: 100%;
+        }
+    }
+</style>
+
+<body>
+    <button class="firefly">
+        <p>萤火虫</p>
+        <div class="lightning">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </button>
+</body>
+<script>
+    var lgh = $('.lightning li').length;
+
+    $('.lightning li').each(function (i) {
+        $(this).css({
+            left: i * (100 / lgh) + '%',
+            bottom: randomNum(-20, 10) + '%',
+            animationDuration: randomNum(1, 5) + 's'
+        });
+    });
+
+    function randomNum(max, min) {
+        var num = Math.floor(Math.random() * (max - min + 1) + min);
+        return num;
+    }
+</script>
+
+</html>
