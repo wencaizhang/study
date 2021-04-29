@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <style>
+      #app {
+        width: 300px;
+        margin: 40px auto;
+      }
+      input {
+        height: 30px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+      }
+      input.error {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input
+        ref="aaaa"
+        v-model="formData.aaaa"
+        v-required
+        placeholder="请输入..."
+      />
+      <input
+        ref="bbbb"
+        v-model="formData.bbbb"
+        v-required
+        placeholder="请输入..."
+      />
+      <input
+        ref="cccc"
+        v-model="formData.cccc"
+        v-required
+        placeholder="请输入..."
+      />
+
+      <br>
+      <button @click="submit">提交</button>
+    </div>
+
+    <script>
+      function toggleClass(value, classList) {
+        const className = "error";
+        if (value === "") {
+          classList.add(className);
+        } else {
+          classList.remove(className);
+        }
+      }
+      var app = new Vue({
+        el: "#app",
+        directives: {
+          required: {
+            inserted: function (el) {
+              el.onblur = function (e) {
+                const value = e.target.value;
+                toggleClass(value, el.classList);
+              };
+            },
+          },
+        },
+        data() {
+          return {
+            formData: {
+              aaaa: "",
+              bbbb: "",
+              cccc: "",
+            },
+          };
+        },
+        methods: {
+          submit() {
+            Object.keys(this.formData).forEach((key) => {
+              const classList = this.$refs[key].classList;
+              toggleClass(this.formData[key], classList);
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
