@@ -10,12 +10,21 @@ import Vue from 'vue'
  * @param {*} props 向组件传入的 props
  * @returns 组件实例
  */
-export function mountComponent(Component, props) {
+export function mountComponent(Component, props, options={}) {
+  console.log('Component: ', Component);
   const propsData = typeof props === 'object' ? props : {}
   const Constructor = Vue.extend(Component)
   const instance = new Constructor({ propsData })
-  instance.$mount()
-  document.body.appendChild(instance.$el)
+  instance.$update = (newProps) => {
+    Object.assign(instance.$props, newProps)
+  }
+  if (options.el) {
+    // 创建并挂载到 el (会替换 el)
+    instance.$mount(options.el)
+  } else {
+    instance.$mount()
+    document.body.appendChild(instance.$el)
+  }
   return instance
 }
 
@@ -25,8 +34,8 @@ export function mountComponent(Component, props) {
  * @param {*} props 向组件传入的 props
  * @returns 组件实例
  */
-export default function useComponent(Component, props) {
-  return mountComponent(Component, props)
+export default function useComponent(Component, props, options) {
+  return mountComponent(Component, props, options)
 }
 
 /**
@@ -40,7 +49,7 @@ export default function useComponent(Component, props) {
 export const useSingleComponent = (() => {
   const state = {}
 
-  return function (Component, props) {
+  return function (Component, props, options) {
     const name = getComponentName(Component)
     if (state[name]) {
       const instance = state[name]
@@ -48,7 +57,7 @@ export const useSingleComponent = (() => {
       return instance
     }
 
-    const instance = mountComponent(Component, props)
+    const instance = mountComponent(Component, props, options)
     state[name] = instance
   }
 })()
