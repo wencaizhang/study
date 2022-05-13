@@ -27,21 +27,41 @@ instance.$on("update", (e) => {
 
 ### 3. 更新 props
 
-需要手动更新组件实例 props
+方法一：使用实例方法
 
 ```js
-Object.assign(instance.$props, newProps)
-// 或者
-instance.$update(newProps)
+const instance = useComponent(Component, props)
+instance.$_update(newProps)
 ```
 
-`$update` 是在创建实例的时候挂载到实例上用于更新 `$props` 的一个方法，它的实现也很简单：
+为了与组件选项 methods 中定义的方法和从 Vue 中继承的方法区分开，所以将这个方法名定义为 `$_update`，`$_update` 是在使用 `useComponent` 创建实例的时候挂载到实例上用于更新 `$props` 的一个方法，它的实现也很简单：
 
 ```js
-instance.$update = (newProps) => {
-  Object.assign(instance.$props, newProps)
+instance.$_update = (newProps) => {
+  // 如果组件定义中没有 props 选项，则不存在 $props 属性
+  if (instance.$props) {
+    Object.assign(instance.$props, newProps)
+  }
 }
 ```
+
+方法二：使用 `Object.assign`
+
+```js
+const instance = useComponent(Component, props)
+Object.assign(instance.$props, newProps)
+```
+
+方法三：重新调用 `useComponent`
+
+```js
+const instance = useComponent(Component, props)
+Object.assign(instance.$props, newProps)
+```
+
+`useComponent` 方法内部默认会保留组件实例的引用，如果已经有了创建过的组件实例，则不会重复创建，但是会更新 `props`。
+
+
 
 同时列举几个错误写法：
 
